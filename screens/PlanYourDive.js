@@ -5,9 +5,54 @@ import HeaderX from "../components/HeaderX";
 import Svg, { Ellipse } from "react-native-svg";
 import LabelTextbox from "../components/LabelTextbox";
 import ButtonFooter from "../components/ButtonFooter";
+import t from 'tcomb-form-native';
+
+const Form = t.form.Form;
+
+const Dive = t.struct({
+  name : t.String,
+  maxDepth : t.Integer,
+  totalBottomTime : t.Integer,
+  phone: t.Number
+});
+
+
+
 
 export default class PlanYourDive extends Component {
 
+  handleSubmit = () => {
+    const value = this._form.getValue(); // use that ref to get the form value
+
+    if (value) {
+      console.log('value: ', typeof value);
+      return fetch('http://140.203.186.181:8050/dive-service/dives', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(value),
+      }).then(response => {
+        if (!response.ok) {
+          return response.json()
+              .catch(() => {
+                // Couldn't parse the JSON
+                throw new Error(response.status);
+              })
+              .then(({message}) => {
+                // Got valid JSON with error response, use it
+                throw new Error(message || response.status);
+              });
+        }
+        // Successful response, parse the JSON and return the data
+
+        this.props.navigation.navigate('Home')
+        console.log('value: ', value);
+
+        console.log(response.json());
+      });
+    }
+  }
   
   render() {
   return (
@@ -33,24 +78,20 @@ export default class PlanYourDive extends Component {
                 contentContainerStyle={styles.scrollArea_contentContainerStyle}
               >
                 <View style={styles.diveInformationStack}>
+
                   <View style={styles.diveInformation}>
                     <Text style={styles.expanded}>Dive</Text>
-                    <LabelTextbox
-                      text1=""
-                      style={styles.LabelTextbox}
-                    ></LabelTextbox>
-                    <LabelTextbox
-                      text1="Total Bottom Time"
-                      textInput1="minutes"
-                      style={styles.LabelTextbox}
-                    ></LabelTextbox>
+                    <Form
+                        ref={c => this._form = c} // assign a ref
+                        type={Dive}
+                    />
                   </View>
                 </View>
               </ScrollView>
             </View>
           </View>
         </View>
-        <ButtonFooter style={styles.buttonFooter} navigation={this.props.navigation}></ButtonFooter>
+        <ButtonFooter onPress={this.handleSubmit} style={styles.buttonFooter} navigation={this.props.navigation}></ButtonFooter>
       </View>
       <StatusBar
         barStyle="light-content"
@@ -61,6 +102,7 @@ export default class PlanYourDive extends Component {
   );
   }
 }
+
 
 const styles = StyleSheet.create({
   root: {

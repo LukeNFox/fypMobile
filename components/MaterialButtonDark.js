@@ -4,8 +4,7 @@ import { withNavigation } from 'react-navigation'
 
 function MaterialButtonDark(props) {
   return (
-    <TouchableOpacity 
-    onPress={() => props.navigation.goBack()}
+    <TouchableOpacity
     style={[styles.container, props.style]}>
       <Text style={styles.caption}>{props.text1 || "BUTTON"}</Text>
     </TouchableOpacity>
