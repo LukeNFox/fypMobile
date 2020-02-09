@@ -3,6 +3,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from "react-navigation";
 import Home from "./screens/Home";
 import PlanYourDive from "./screens/PlanYourDive";
+import Buddies from "./screens/Buddies";
+import Submit from "./screens/Submit";
 
 const AppNavigator= createStackNavigator(
 {
@@ -17,7 +19,19 @@ const AppNavigator= createStackNavigator(
       headerShown: false,
     },
     screen: PlanYourDive
-  }
+  },
+  Buddies: {
+    navigationOptions: {
+      headerShown: false,
+    },
+    screen: Buddies
+  },
+  Submit: {
+    navigationOptions: {
+      headerShown: false,
+    },
+    screen: Submit
+}
 },
   {
     initialRouteName: 'Home',

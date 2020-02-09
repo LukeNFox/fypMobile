@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import MaterialButtonLight from "./MaterialButtonLight";
 
 export default class ButtonFooter extends Component{
   constructor(props){
     super(props)
   }
 
-  handleSubmit = () => {
+  handlePress = () => {
     // Need to check to prevent null exception.
     this.props.onPress?.(); // Same as this.props.onPress && this.props.onPress();
   }
@@ -17,15 +16,15 @@ export default class ButtonFooter extends Component{
         <View style={[styles.container, this.props.style]}>
           <View style={styles.rect}>
             <View style={styles.materialButtonLightRow}>
-              <MaterialButtonLight
-                  text1="Cancel"
-                  style={styles.materialButtonLight}
-                  onPress={() => this.navigation.navigation.navigate('Home')}
-              ></MaterialButtonLight>
               <TouchableOpacity
-                  onPress={this.handleSubmit}
-                  style={[ButtonStyles.container, styles.materialButtonDark]}>
-                <Text style={ButtonStyles.caption}>{"Start Dive"}</Text>
+                  onPress={() => this.props.navigation.navigate(this.props.goBackTo)}
+                  style={[ButtonStyles.container,ButtonStyles.light, styles.materialButtonLight]}>
+                <Text style={ButtonStyles.captionLight}>{this.props.textBack}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                  onPress={this.handlePress}
+                  style={[ButtonStyles.container,ButtonStyles.dark, styles.materialButtonDark]}>
+                <Text style={ButtonStyles.captionDark}>{this.props.textForward}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -35,7 +34,6 @@ export default class ButtonFooter extends Component{
 }
 const ButtonStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#212121",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -52,8 +50,18 @@ const ButtonStyles = StyleSheet.create({
     shadowOpacity: 0.35,
     shadowRadius: 5
   },
-  caption: {
+  captionDark: {
     color: "#fff",
+    fontSize: 14,
+  },
+  dark: {
+    backgroundColor: "#212121",
+  },
+  light:{
+    backgroundColor: "#CCCCCC",
+  },
+  captionLight: {
+    color: "#FFFFFF",
     fontSize: 14,
   }
 });

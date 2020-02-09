@@ -3,58 +3,84 @@ import { StyleSheet, View, Text, ScrollView, StatusBar, Button } from "react-nat
 
 import HeaderX from "../components/HeaderX";
 import Svg, { Ellipse } from "react-native-svg";
-import LabelTextbox from "../components/LabelTextbox";
 import ButtonFooter from "../components/ButtonFooter";
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-const Dive = t.struct({
-  name : t.String,
-  maxDepth : t.Integer,
-  totalBottomTime : t.Integer,
-  phone: t.Number
+var environment = t.enums({
+  A: 'Fresh',
+  B: 'Salt',
+  C: 'Shore',
+  D: 'Boat',
+  E: 'Deep',
+  F: 'Night'
 });
 
+var difficulty = t.enums({
+  E: 'Easy',
+  M: 'Medium',
+  H: 'Hard'
+})
 
+var strength = t.enums({
+  C: 'Calm',
+  M: 'Moderate',
+  R: 'Rough'
+})
 
+var current = t.enums({
+  N: 'None',
+  M: 'Moderate',
+  S: 'Strong'
+})
+
+const Dive = t.struct({
+  name:  t.String,
+  location:  t.maybe(t.String),
+
+  maxDepth: t.maybe(t.Integer),
+  entryTime:  t.maybe(t.Date),
+  totalBottomTime:  t.maybe(t.Number),
+  visibility:  t.maybe(t.Number),
+  environment:  t.maybe(environment),
+  seaConditions:  t.maybe(strength),
+  current:  t.maybe(current),
+  diveDifficulty:  t.maybe(difficulty),
+  parking:  t.maybe(difficulty),
+  nearestHyperbaricChamber:  t.maybe(t.String),
+  nearestHemsUnit:  t.maybe(t.String),
+  emsPhoneNumber:  t.maybe(t.Number),
+  coastguardPhoneNumber:  t.maybe(t.Number)
+});
+
+var options = {
+  fields: {
+    entryTime: {
+      mode: 'time' // display the Date field as a DatePickerAndroid
+    },
+    exitTime: {
+      mode: 'time' // display the Date field as a DatePickerAndroid
+    }
+  }
+};
 
 export default class PlanYourDive extends Component {
 
-  handleSubmit = () => {
+  handlePress = () => {
     const value = this._form.getValue(); // use that ref to get the form value
-
     if (value) {
-      console.log('value: ', typeof value);
-      return fetch('http://140.203.186.181:8050/dive-service/dives', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(value),
-      }).then(response => {
-        if (!response.ok) {
-          return response.json()
-              .catch(() => {
-                // Couldn't parse the JSON
-                throw new Error(response.status);
-              })
-              .then(({message}) => {
-                // Got valid JSON with error response, use it
-                throw new Error(message || response.status);
-              });
-        }
-        // Successful response, parse the JSON and return the data
-
-        this.props.navigation.navigate('Home')
-        console.log('value: ', value);
-
-        console.log(response.json());
-      });
+      this.props.navigation.state.params.diveInformation = value;
+      console.log('pyd: ',this.props.navigation.state.params.diveInformation)
+      this.props.navigation.navigate('Buddies', {diveInformation: this.props.navigation.state.params.diveInformation, buddies: this.props.navigation.state.params.buddies})
+      console.log('value: ', value);
     }
   }
   
   render() {
+    const { navigate } = this.props.navigation;
+    console.log("navigate to plan a dive screen")
   return (
     <View style={styles.root}>
       <HeaderX icon2Name="power" style={styles.headerX}></HeaderX>
@@ -80,18 +106,20 @@ export default class PlanYourDive extends Component {
                 <View style={styles.diveInformationStack}>
 
                   <View style={styles.diveInformation}>
-                    <Text style={styles.expanded}>Dive</Text>
+
                     <Form
                         ref={c => this._form = c} // assign a ref
                         type={Dive}
+                        options={options}
                     />
+
                   </View>
                 </View>
               </ScrollView>
             </View>
           </View>
         </View>
-        <ButtonFooter onPress={this.handleSubmit} style={styles.buttonFooter} navigation={this.props.navigation}></ButtonFooter>
+        <ButtonFooter onPress={this.handlePress} style={styles.buttonFooter} goBackTo={'Home'} textForward={"Go to Buddies"} textBack={"Cancel"} navigation={this.props.navigation}></ButtonFooter>
       </View>
       <StatusBar
         barStyle="light-content"
@@ -131,14 +159,14 @@ const styles = StyleSheet.create({
   },
   scrollArea: {
     left: 250,
-    height: 550,
+    height: 500,
     position: "absolute",
     right: 250,
-    bottom: 300
+    top: 30
   },
   scrollArea_contentContainerStyle: {
     width: 358,
-    height: 2750,
+    height: 1500,
   },
   diveInformation: {
     top: 0,

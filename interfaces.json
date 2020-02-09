@@ -1,0 +1,38 @@
+{
+  "diveInformation": {
+    "name" : null,
+    "location" :null,
+    "maxDepth": null,
+    "entryTime": null,
+    "totalBottomTime": null,
+    "visibility": null,
+    "environment": null,
+    "seaConditions": null,
+    "current": null,
+    "diveDifficulty": null,
+    "parking": null,
+    "nearestHyperbaricChamber": null,
+    "nearestHemsUnit": null,
+    "emsPhoneNumber": null,
+    "coastguardPhoneNumber": null
+  },
+  "buddies": {
+    "leader": {
+      "diverInformation": {
+        "name": null,
+        "phoneNumber": null,
+        "gasBlend": null,
+        "exposureSuit": null,
+        "breathingApparatus": null,
+        "qualifications": null,
+        "medicalHistory": null
+      }
+    },
+
+
+    "diver1": {
+      "diverInformation": {
+      }
+    }
+  }
+}
