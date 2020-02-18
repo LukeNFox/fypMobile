@@ -245,7 +245,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_in.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_push_up_in.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -257,7 +257,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_redbox_item_frame.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/layout/redbox_item_frame.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/layout/redbox_item_frame.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
@@ -477,7 +477,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_slide_up.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_slide_up.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_slide_up.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_notification_media_cancel_action.xml.flat",
@@ -681,7 +681,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/layout/dev_loading_view.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/layout/dev_loading_view.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -897,7 +897,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_fade_out.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_fade_out.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_fade_out.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -965,7 +965,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable_redbox_top_border_background.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/drawable/redbox_top_border_background.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/drawable/redbox_top_border_background.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -1233,7 +1233,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/xml_rn_dev_preferences.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/xml/rn_dev_preferences.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/xml/rn_dev_preferences.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -1281,7 +1281,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_slide_down.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_slide_down.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_slide_down.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/color-v23_abc_color_highlight_material.xml.flat",
@@ -1293,7 +1293,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_fade_in.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_fade_in.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_fade_in.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable_ic_mtrl_chip_close_circle.xml.flat",
@@ -1489,7 +1489,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_fps_view.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/layout/fps_view.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/layout/fps_view.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -2113,7 +2113,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_redbox_view.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/layout/redbox_view.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/layout/redbox_view.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_abc_slide_out_bottom.xml.flat",
@@ -2201,7 +2201,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_redbox_item_title.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/layout/redbox_item_title.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/layout/redbox_item_title.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/layout_abc_search_view.xml.flat",
@@ -2253,7 +2253,7 @@
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_out.xml.flat",
-        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/res/anim/catalyst_push_up_out.xml"
+        "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/res/anim/catalyst_push_up_out.xml"
     },
     {
         "merged": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",

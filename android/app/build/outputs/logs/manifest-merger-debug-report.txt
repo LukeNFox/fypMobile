@@ -4,12 +4,13 @@ ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManife
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:1:1-48:12
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:1:1-48:12
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:1:1-48:12
+MERGED from [:react-native-app-auth] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-app-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-screens] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:expo-permissions] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-permissions/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:unimodules-react-native-adapter] /home/luke/fyp/mobileApp/fypMobile/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.61.5] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.react:react-native:0.61.4] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.material:material:1.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/luke/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/3034c27a563860bd68fb815cf0e44eb7/AndroidManifest.xml:17:1-24:12
 MERGED from [:expo-app-loader-provider] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-app-loader-provider/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -34,6 +35,7 @@ MERGED from [:unimodules-core] /home/luke/fyp/mobileApp/fypMobile/node_modules/@
 MERGED from [:unimodules-image-loader-interface] /home/luke/fyp/mobileApp/fypMobile/node_modules/unimodules-image-loader-interface/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:unimodules-sensors-interface] /home/luke/fyp/mobileApp/fypMobile/node_modules/unimodules-sensors-interface/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [org.webkit:android-jsc:r245459] /home/luke/.gradle/caches/transforms-1/files-1.1/android-jsc-r245459.aar/8c5ddd522c1a82234dd7d4945a97f463/AndroidManifest.xml:2:1-11:12
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:15:1-46:12
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.9.0.aar/582d83da5a347fbf706ce23da87b03b5/AndroidManifest.xml:2:1-12:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-gifdecoder-4.9.0.aar/9fd878c88dfecfd7ff79656ed1d4caee/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/20463f62b5ad513ea57c173468b98288/AndroidManifest.xml:2:1-9:12
@@ -106,6 +108,8 @@ uses-permission#android.permission.INTERNET
 ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:4:5-67
 MERGED from [:expo-file-system] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-67
 MERGED from [:expo-file-system] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-67
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:24:5-67
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:4:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
@@ -190,14 +194,16 @@ ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManife
 		ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:25:22-70
 application
 ADDED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml:28:5-46:19
-MERGED from [com.facebook.react:react-native:0.61.5] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.react:react-native:0.61.5] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.4] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.61.4] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.material:material:1.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/AndroidManifest.xml:22:5-20
 MERGED from [:expo-file-system] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:5-28:19
 MERGED from [:expo-file-system] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:5-28:19
 MERGED from [:expo-location] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-19:19
 MERGED from [:expo-location] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-19:19
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:26:5-44:19
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:26:5-44:19
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.9.0.aar/582d83da5a347fbf706ce23da87b03b5/AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.9.0.aar/582d83da5a347fbf706ce23da87b03b5/AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-gifdecoder-4.9.0.aar/9fd878c88dfecfd7ff79656ed1d4caee/AndroidManifest.xml:9:5-20
@@ -262,6 +268,8 @@ uses-sdk
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/luke/fyp/mobileApp/fypMobile/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-app-auth] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-app-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-app-auth] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-app-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-permissions] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-permissions/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -272,8 +280,8 @@ MERGED from [:react-native-gesture-handler] /home/luke/fyp/mobileApp/fypMobile/n
 MERGED from [:react-native-gesture-handler] /home/luke/fyp/mobileApp/fypMobile/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:unimodules-react-native-adapter] /home/luke/fyp/mobileApp/fypMobile/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:unimodules-react-native-adapter] /home/luke/fyp/mobileApp/fypMobile/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.61.5] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.61.5] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.5.aar/5969c7452b1bf6eda3cbcfd4e51955af/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.4] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.61.4] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.61.4.aar/6486207a3e1dd791b9a845081fd82441/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.0.0] /home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/luke/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/3034c27a563860bd68fb815cf0e44eb7/AndroidManifest.xml:20:5-22:41
@@ -322,6 +330,8 @@ MERGED from [:unimodules-sensors-interface] /home/luke/fyp/mobileApp/fypMobile/n
 MERGED from [:unimodules-sensors-interface] /home/luke/fyp/mobileApp/fypMobile/node_modules/unimodules-sensors-interface/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/luke/.gradle/caches/transforms-1/files-1.1/android-jsc-r245459.aar/8c5ddd522c1a82234dd7d4945a97f463/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/luke/.gradle/caches/transforms-1/files-1.1/android-jsc-r245459.aar/8c5ddd522c1a82234dd7d4945a97f463/AndroidManifest.xml:7:5-9:41
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:20:5-22:41
+MERGED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.9.0.aar/582d83da5a347fbf706ce23da87b03b5/AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.9.0.aar/582d83da5a347fbf706ce23da87b03b5/AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-gifdecoder-4.9.0.aar/9fd878c88dfecfd7ff79656ed1d4caee/AndroidManifest.xml:5:5-7:41
@@ -466,6 +476,42 @@ ADDED from [:expo-location] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo
 		ADDED from [:expo-location] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
 	android:name
 		ADDED from [:expo-location] /home/luke/fyp/mobileApp/fypMobile/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-78
+activity#net.openid.appauth.AuthorizationManagementActivity
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:27:9-31:75
+	android:launchMode
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:30:13-44
+	android:exported
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:29:13-37
+	android:theme
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:31:13-72
+	android:name
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:28:13-78
+activity#net.openid.appauth.RedirectUriReceiverActivity
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:32:9-43:20
+	android:exported
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:34:13-36
+	android:name
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:33:13-74
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:${appAuthRedirectScheme}
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:35:13-42:29
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:com.okta.dev-691479
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:35:13-42:29
+action#android.intent.action.VIEW
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:36:25-66
+category#android.intent.category.DEFAULT
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:38:17-76
+	android:name
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:38:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:39:17-78
+	android:name
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:39:27-75
+data
+ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:41:17-67
+	android:scheme
+		ADDED from [net.openid:appauth:0.7.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-appauth-0.7.1.aar/11d323014aacb206ebba13bd705c16b4/AndroidManifest.xml:41:23-64
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/luke/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/3629add14d11bb5efaa55b1cf05efe26/AndroidManifest.xml:23:9-26:75
 	android:exported

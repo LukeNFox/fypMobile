@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { UIManager, LayoutAnimation } from 'react-native';
 import AppAuth from 'react-native-app-auth';
 import { Page, Button, ButtonContainer, Form, Heading } from './components';
-import { createConfig, signIn, signOut, getAccessToken } from '@okta/okta-react-native';
+import { authorize, revoke,refresh } from 'react-native-app-auth';
 import Routes from "./Routes";
 
 UIManager.setLayoutAnimationEnabledExperimental &&
 UIManager.setLayoutAnimationEnabledExperimental(true);
-
-const scopes = ['openid', 'profile', 'email', 'offline_access'];
-
-
 
 type State = {
     hasLoggedInOnce: boolean,
@@ -19,22 +15,21 @@ type State = {
     refreshToken: ?string
 };
 
+const config = {
+    issuer: 'https://dev-691479.okta.com/oauth2/default',
+    clientId: '0oa25680rZMmf4TIl4x6',
+    redirectUrl: 'com.okta.dev-691479:/callback',
+    scopes: ['openid', 'profile']
+};
+
 
 export default class App extends Component<{}, State> {
-    auth = new AppAuth({
-        issuer: 'https://dev-691479.okta.com/oauth2/default',
-        clientId: '0oa25680rZMmf4TIl4x6',
-        redirectUrl: 'com.okta.dev-691479:/callback'
-    });
-
     state = {
         hasLoggedInOnce: false,
         accessToken: '',
         accessTokenExpirationDate: '',
         refreshToken: ''
     };
-
-
 
 
     animateState(nextState: $Shape<State>, delay: number = 0) {
@@ -47,16 +42,9 @@ export default class App extends Component<{}, State> {
     }
 
     authorize = async () => {
-        await createConfig({
-            clientId: "0oa25680rZMmf4TIl4x6",
-            redirectUri: "com.okta.dev-691479:/callback",
-            endSessionRedirectUri: "com.okta.dev-691479:/",
-            discoveryUri: "https://dev-691479.okta.com",
-            scopes: ["openid", "profile", "offline_access"],
-            requireHardwareBackedKeyStore: true
-        });
         try {
-            const authState = await this.auth.authorize(scopes);
+            // Log in to get an authentication token
+            const authState = await authorize(config);
             this.animateState(
                 {
                     hasLoggedInOnce: true,
@@ -67,13 +55,18 @@ export default class App extends Component<{}, State> {
                 500
             );
         } catch (error) {
+            console.log(error)
             console.error(error);
         }
     };
 
     refresh = async () => {
         try {
-            const authState = await this.auth.refresh(this.state.refreshToken, scopes);
+            // Refresh token
+            const authState = await refresh(config, {
+                refreshToken: authState.refreshToken,
+            });
+
             this.animateState({
                 accessToken: authState.accessToken || this.state.accessToken,
                 accessTokenExpirationDate:
@@ -87,7 +80,10 @@ export default class App extends Component<{}, State> {
 
     revoke = async () => {
         try {
-            await this.auth.revokeToken(this.state.accessToken);
+            // Revoke token
+            await revoke(config, {
+                tokenToRevoke: refreshedState.refreshToken
+            });
             this.animateState({
                 accessToken: '',
                 accessTokenExpirationDate: '',

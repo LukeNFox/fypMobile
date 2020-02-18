@@ -106,7 +106,7 @@ android {
         versionCode 1
         versionName "1.0"
         manifestPlaceholders = [
-                appAuthRedirectScheme: '{com.okta.dev-691479}'
+                appAuthRedirectScheme: 'com.okta.dev-691479'
         ]
     }
     splits {
@@ -117,8 +117,13 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+
+
     buildTypes {
         release {
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://facebook.github.io/react-native/docs/signed-apk-android.
+            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -147,7 +152,8 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 dependencies {
-    compile "com.android.support:appcompat-v7:25.3.1"
+    implementation project(':react-native-app-auth')
+    implementation "com.android.support:appcompat-v7:25.3.1"
 
     implementation project(':react-native-screens')
     implementation project(':react-native-reanimated')

@@ -43,4 +43,8 @@ target 'ScubaSos' do
 
   # Automatically detect installed unimodules
   use_unimodules!
+  pod 'RNAppAuth', :path => '../node_modules/react-native-app-auth'
+
+  pod 'react-native-app-auth', :path => '../node_modules/react-native-app-auth'
+
 end
