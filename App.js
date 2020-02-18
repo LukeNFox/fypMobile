@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { UIManager, LayoutAnimation } from 'react-native';
 import AppAuth from 'react-native-app-auth';
-import { Page, Button, ButtonContainer, Form, Heading } from './components';
+import { Page, Button, ButtonContainer, FormLabel, FormValue, Form, Heading } from './components';
 import { authorize, revoke,refresh } from 'react-native-app-auth';
 import Routes from "./Routes";
 
@@ -102,12 +102,11 @@ export default class App extends Component<{}, State> {
             <Page>
                 {!!state.accessToken ? (
                     <Form>
-                        <Form.Label>accessToken</Form.Label>
-                        <Form.Value>{state.accessToken}</Form.Value>
-                        <Form.Label>accessTokenExpirationDate</Form.Label>
-                        <Form.Value>{state.accessTokenExpirationDate}</Form.Value>
-                        <Form.Label>refreshToken</Form.Label>
-                        <Form.Value>{state.refreshToken}</Form.Value>
+                        <FormLabel>accessToken</FormLabel>
+                        <FormValue>{state.accessToken}</FormValue>
+                        <FormLabel>accessTokenExpirationDate</FormLabel>
+                        <FormValue>{state.accessTokenExpirationDate}</FormValue>
+                        <FormLabel>refreshToken</FormLabel>
                     </Form>
                 ) : (
                     <Heading>{state.hasLoggedInOnce ? 'Goodbye.' : 'Hello, stranger.'}</Heading>
