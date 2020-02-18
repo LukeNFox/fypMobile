@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/luke/fyp/mobileApp/fypMobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/3034c27a563860bd68fb815cf0e44eb7/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                },
+                {
+                    "source": "/home/luke/.gradle/caches/transforms-1/files-1.1/material-1.0.0.aar/94357639d0b8a19b759eccdeee4115c9/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "10",
+                        "endOffsets": "222"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "264",
+                        "endLines": "8",
+                        "endColumns": "10",
+                        "endOffsets": "431"
+                    }
+                }
+            ]
+        }
+    ]
+}

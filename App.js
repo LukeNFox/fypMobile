@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { UIManager, LayoutAnimation } from 'react-native';
 import AppAuth from 'react-native-app-auth';
 import { Page, Button, ButtonContainer, Form, Heading } from './components';
+import { createConfig, signIn, signOut, getAccessToken } from '@okta/okta-react-native';
 import Routes from "./Routes";
 
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -21,7 +22,7 @@ type State = {
 
 export default class App extends Component<{}, State> {
     auth = new AppAuth({
-        issuer: 'https://dev-691479-admin.okta.com/oauth2/default',
+        issuer: 'https://dev-691479.okta.com/oauth2/default',
         clientId: '0oa25680rZMmf4TIl4x6',
         redirectUrl: 'com.okta.dev-691479:/callback'
     });
@@ -34,6 +35,8 @@ export default class App extends Component<{}, State> {
     };
 
 
+
+
     animateState(nextState: $Shape<State>, delay: number = 0) {
         setTimeout(() => {
             this.setState(() => {
@@ -44,6 +47,14 @@ export default class App extends Component<{}, State> {
     }
 
     authorize = async () => {
+        await createConfig({
+            clientId: "0oa25680rZMmf4TIl4x6",
+            redirectUri: "com.okta.dev-691479:/callback",
+            endSessionRedirectUri: "com.okta.dev-691479:/",
+            discoveryUri: "https://dev-691479.okta.com",
+            scopes: ["openid", "profile", "offline_access"],
+            requireHardwareBackedKeyStore: true
+        });
         try {
             const authState = await this.auth.authorize(scopes);
             this.animateState(
