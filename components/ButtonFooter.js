@@ -35,12 +35,10 @@ export default class ButtonFooter extends Component{
 const ButtonStyles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingRight: 16,
-    paddingLeft: 16,
     elevation: 2,
-    minWidth: 88,
     borderRadius: 2,
     shadowOffset: {
       height: 1,
@@ -69,15 +67,10 @@ const ButtonStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    alignContent: "center",
   },
   rect: {
-    width: 400,
     height: 100,
-    marginLeft: 0,
-    marginRight: 0,
     backgroundColor: "rgba(31,178,204,1)",
-    flexDirection: "row"
   },
   materialButtonLight: {
     width: 120,
@@ -92,9 +85,9 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     flex: 1,
-    marginRight: 30,
-    marginLeft: 40,
-    marginTop: 15
+    marginRight: 50,
+    marginLeft: 50,
+    marginTop: 20
   }
 });
 

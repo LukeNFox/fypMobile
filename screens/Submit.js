@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {StyleSheet, View, Text, ActivityIndicator, StatusBar, Button, TouchableOpacity} from "react-native";
+import { styles } from './styles'
 
 import HeaderX from "../components/HeaderX";
 import Svg, {Ellipse} from "react-native-svg";
@@ -115,7 +116,6 @@ export default class Submit extends Component {
                 <StatusBar
                     barStyle="light-content"
                     hidden={false}
-                    backgroundColor="rgba(0,0,0,0)"
                 ></StatusBar>
             </View>
         );
@@ -184,9 +184,7 @@ const confirmStyle = StyleSheet.create(
     {
         container: {
             flexDirection: "column",
-            justifyContent: "center",
             alignItems: "center",
-            top: 200,
         },
         component: {
             fontSize: 20,
@@ -199,7 +197,6 @@ const confirmStyle2 = StyleSheet.create(
     {
         container: {
             flexDirection: "row",
-            justifyContent: "center",
             padding: 20,
         }
     }
@@ -228,83 +225,5 @@ const ButtonStyles = StyleSheet.create({
     caption: {
         color: "#fff",
         fontSize: 14
-    }
-});
-
-
-const styles = StyleSheet.create({
-    root: {
-        flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: "rgb(255,255,255)",
-    },
-    body: {
-        top: 0,
-        backgroundColor: "#1fb2cc",
-        position: "absolute",
-        width: 400
-    },
-    pageName: {
-        color: "rgba(255,255,255,1)",
-        fontSize: 24,
-        width: 400,
-        marginLeft: 30,
-    },
-    ellipse: {
-        top: 0,
-        left: 0,
-        width: 859,
-        height: 890,
-        alignItems: "center",
-    },
-    scrollArea: {
-        left: 250,
-        height: 550,
-        position: "absolute",
-        right: 250,
-        bottom: 300
-    },
-    scrollArea_contentContainerStyle: {
-        width: 358,
-        height: 2750,
-    },
-    diveInformation: {
-        top: 0,
-        left: 0,
-        height: 153,
-        position: "absolute",
-        right: 0
-    },
-    expanded: {
-        color: "#121212",
-        fontSize: 18
-    },
-    LabelTextbox: {
-        width: 320,
-        height: 80,
-    },
-    diveInformationStack: {
-        height: 562,
-        marginTop: 18,
-        marginLeft: 24,
-        marginRight: 24
-    },
-    ellipseStack: {
-        height: 890,
-        marginTop: 12,
-        marginLeft: -249,
-        marginRight: -250
-    },
-    buttonFooter: {
-        bottom: 0,
-        left: 1,
-        width: 360,
-        height: 80,
-        position: "absolute"
-    },
-    bodyStack: {
-        width: 361,
-        flex: 1,
-        marginBottom: -3
     }
 });

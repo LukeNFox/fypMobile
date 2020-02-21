@@ -14,15 +14,14 @@ function HeaderX(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(31,178,204,1)"
+    backgroundColor: "rgba(31,178,204,1)",
   },
   group: {
-    width: 400,
     height: 100,
     marginLeft: 0,
     marginRight: 0,
     backgroundColor: "rgba(31,178,204,1)",
-    marginTop: 40,
+    marginTop: 0,
   },
   logoHeader: {
     width: 41,
