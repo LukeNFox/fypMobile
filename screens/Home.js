@@ -9,11 +9,18 @@ export default class Home extends Component {
     return (
     <View style={styles.container} >
       <HeaderX style={styles.headerX}></HeaderX>
+        <View style={ButtonStyles.container}>
         <TouchableOpacity
             onPress={() => navigate('PlanYourDive', {diveInformation:diveInfo,buddies:buddies})}
-            style={[styles.materialButtonDark2,ButtonStyles.container, this.props.style]}>
+            style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
             <Text style={ButtonStyles.caption}>Plan A Dive</Text>
         </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*    onPress={() => navigate('Auth')}*/}
+        {/*    style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>*/}
+        {/*    <Text style={ButtonStyles.caption}>Login/Signup</Text>*/}
+        {/*</TouchableOpacity>*/}
+    </View>
     </View>
   );
   }
@@ -50,30 +57,29 @@ var buddies = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginLeft: 0,
-    marginRight: 0,
+      flex:1,
+      flexDirection: 'column',
     backgroundColor: "rgba(255,255,255,1)"
   },
   materialButtonDark2: {
     width: 120,
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 265,
-    marginLeft: 130
   }
 });
 
 const ButtonStyles = StyleSheet.create({
     container: {
-        backgroundColor: "#212121",
-        flexDirection: "row",
+        flex:1,
+        flexDirection: 'row',
         alignItems: "center",
-        justifyContent: "center",
-        paddingRight: 16,
-        paddingLeft: 16,
-        elevation: 2,
+        justifyContent: "space-evenly",
+        backgroundColor: "rgba(255,255,255,1)"
+    },
+    buttons: {
+        backgroundColor: "#212121",
+        flexDirection:'row',
+        alignItems: "center",
+        justifyContent: "space-evenly",
         width: 120,
         height: 50,
         borderRadius: 2,
@@ -88,6 +94,6 @@ const ButtonStyles = StyleSheet.create({
     caption: {
         color: "#fff",
         fontSize: 14
-    }
+    },
 });
 

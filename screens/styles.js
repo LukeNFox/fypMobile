@@ -71,4 +71,32 @@ const styles = StyleSheet.create({
         marginBottom: -3
     }
 })
-export {styles}
+
+const ButtonStyles = StyleSheet.create({
+    container: {
+        justifyContent: "center",
+    },
+    rect: {
+        height: 100,
+        backgroundColor: "rgba(31,178,204,1)",
+    },
+    materialButtonLight: {
+        width: 120,
+        height: 50
+    },
+    materialButtonDark: {
+        width: 120,
+        height: 50,
+        marginLeft: 50
+    },
+    materialButtonLightRow: {
+        height: 50,
+        flexDirection: "row",
+        flex: 1,
+        marginRight: 50,
+        marginLeft: 50,
+        marginTop: 20
+    }
+})
+
+export {styles, ButtonStyles}

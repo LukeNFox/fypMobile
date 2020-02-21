@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from "react-navigation";
+import { createSwitchNavigator, NavigationActions, createAppContainer } from 'react-navigation';
 import Home from "./screens/Home";
 import PlanYourDive from "./screens/PlanYourDive";
 import Buddies from "./screens/Buddies";
 import Submit from "./screens/Submit";
+import Auth from "./screens/Auth";
 
-const AppNavigator= createStackNavigator(
+import { Auth as AmplifyAuth } from 'aws-amplify'
+
+import { Hub } from 'aws-amplify';
+
+
+const AppNavigator= createSwitchNavigator(
 {
   Home: {
     navigationOptions: {
@@ -31,17 +36,36 @@ const AppNavigator= createStackNavigator(
       headerShown: false,
     },
     screen: Submit
-}
 },
-  {
-    initialRouteName: 'Home',
+  Auth: {
+    navigationOptions: {
+      headerShown: false,
+    },
+    screen: Auth
   }
+},
 );
 
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
+
+  checkAuth = async () => {
+    try {
+      await AmplifyAuth.currentAuthenticatedUser()
+    } catch (err) {
+      this.navigator.dispatch(
+          NavigationActions.navigate({routeName: 'Auth'})
+      )
+    }
+  }
+
+   render() {
+    return (
+      <AppContainer
+        ref={nav => this.navigator = nav}
+        onNavigationStateChange={this.checkAuth}
+    />
+    )
   }
 }

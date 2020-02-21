@@ -1,0 +1,20 @@
+{
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-fypmobile-test-144230-authRole",
+            "UnauthRoleArn": "arn:aws:iam::743144606556:role/amplify-fypmobile-test-144230-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::743144606556:role/amplify-fypmobile-test-144230-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-fypmobile-test-144230-deployment",
+            "UnauthRoleName": "amplify-fypmobile-test-144230-unauthRole",
+            "StackName": "amplify-fypmobile-test-144230",
+            "StackId": "arn:aws:cloudformation:eu-west-1:743144606556:stack/amplify-fypmobile-test-144230/64d137d0-54b8-11ea-bc3c-027abb6c15d2",
+            "AmplifyAppId": "doidzlfxbi4gh"
+        },
+        "categories": {
+            "auth": {
+                "fypmobilee836ac03": {}
+            }
+        }
+    }
+}
