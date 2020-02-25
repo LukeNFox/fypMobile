@@ -38,7 +38,7 @@ var current = t.enums({
 })
 
 const Dive = t.struct({
-  name:  t.String,
+  name:  t.maybe(t.String),
   location:  t.maybe(t.String),
 
   maxDepth: t.maybe(t.Integer),

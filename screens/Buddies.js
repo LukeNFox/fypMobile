@@ -32,7 +32,7 @@ export default class Buddies extends Component {
       valueObject.diveId = null;
       this.props.navigation.state.params.buddies = valueObject;
       console.log(this.props.navigation.state.params)
-      this.props.navigation.navigate('Submit', {
+      this.props.navigation.navigate('Contacts', {
         diveInformation: this.props.navigation.state.params.diveInformation,
         buddies: this.props.navigation.state.params.buddies
       })
@@ -79,7 +79,7 @@ export default class Buddies extends Component {
             </View>
           </View>
           <ButtonFooter onPress={this.handlePress} style={styles.buttonFooter} goBackTo={'PlanYourDive'}
-                        textForward={"Confirmation"} textBack={"Go Back"}
+                        textForward={"Choose Contacts"} textBack={"Go Back"}
                         navigation={this.props.navigation}></ButtonFooter>
           <StatusBar
               hidden={false}

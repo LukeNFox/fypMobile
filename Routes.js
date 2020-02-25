@@ -5,11 +5,10 @@ import PlanYourDive from "./screens/PlanYourDive";
 import Buddies from "./screens/Buddies";
 import Submit from "./screens/Submit";
 import Auth from "./screens/Auth";
+import Contacts from "./screens/Contacts";
+import ActiveDive from "./screens/ActiveDive";
 
 import { Auth as AmplifyAuth } from 'aws-amplify'
-
-import { Hub } from 'aws-amplify';
-
 
 const AppNavigator= createSwitchNavigator(
 {
@@ -31,6 +30,12 @@ const AppNavigator= createSwitchNavigator(
     },
     screen: Buddies
   },
+  Contacts: {
+    navigationOptions: {
+      headerShown: false,
+    },
+    screen: Contacts
+  },
   Submit: {
     navigationOptions: {
       headerShown: false,
@@ -42,8 +47,14 @@ const AppNavigator= createSwitchNavigator(
       headerShown: false,
     },
     screen: Auth
+  },
+  ActiveDive: {
+    navigationOptions: {
+      headerShown: false,
+    },
+    screen: ActiveDive
   }
-},
+}
 );
 
 const AppContainer = createAppContainer(AppNavigator);

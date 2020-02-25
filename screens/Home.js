@@ -8,7 +8,7 @@ export default class Home extends Component {
       const { navigate } = this.props.navigation;
     return (
     <View style={styles.container} >
-      <HeaderX style={styles.headerX}></HeaderX>
+      <HeaderX/>
         <View style={ButtonStyles.container}>
         <TouchableOpacity
             onPress={() => navigate('PlanYourDive', {diveInformation:diveInfo,buddies:buddies})}
@@ -54,6 +54,7 @@ var buddies = {
     qualifications: null,
     medicalHistory: null
 }
+
 
 const styles = StyleSheet.create({
   container: {

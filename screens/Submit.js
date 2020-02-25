@@ -1,33 +1,41 @@
 import React, {Component} from "react";
-import {StyleSheet, View, Text, ActivityIndicator, StatusBar, Button, TouchableOpacity} from "react-native";
+import {StyleSheet, View, Text, ActivityIndicator, StatusBar, Button, TouchableOpacity, ScrollView} from "react-native";
 import { styles } from './styles'
 
 import HeaderX from "../components/HeaderX";
 import Svg, {Ellipse} from "react-native-svg";
 import ButtonFooter from "../components/ButtonFooter";
 
-let url = "172.20.10.2";
+let url = "ec2-52-212-49-13.eu-west-1.compute.amazonaws.com";
 
 export default class Submit extends Component {
     state = {
         diveIsLoading: true,
         buddyIsLoading: true,
+        smsIsLoading:true,
         enabled:  true
     };
 
     constructor(props) {
         super(props);
-        this.state = {diveIsLoading: true, buddyIsLoading: true, enabled: true };
+        this.state = {
+            diveIsLoading: true,
+            buddyIsLoading: true,
+            smsIsLoading:true,
+            smsId: null,
+            enabled: true };
     }
 
     handleSubmit = () => {
-        this.setState({diveIsLoading: true, buddyIsLoading: true, enabled: false });
+        this.setState({diveIsLoading: true, buddyIsLoading: true, smsIsLoading:true, enabled: false });
         let diveInfo    = this.props.navigation.state.params.diveInformation;
         let buddy     = this.props.navigation.state.params.buddies;
+        let smsInfo        = this.props.navigation.state.params.smsInformation;
         buddy.diveId = null;
+        let smsId = null;
 
         if (diveInfo) {
-            fetch(`http://${url}:8050/dive-service/dives`, {
+            fetch(`http://${url}/dive-service/dives`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,10 +49,12 @@ export default class Submit extends Component {
                 return response.json();
             }).then(json => {
                 buddy.diveId = json.id;
+                smsInfo.message = ("The dive information is available at http://www.scubaSOS.com/" + buddy.diveId );
+                console.log("SMS populated with message: ",smsInfo)
                 console.log("Returning diveId", buddy.diveId)
                 if (buddy.diveId) {
                     console.log("Buddy populated with dive id: ",buddy)
-                    fetch(`http://${url}:8050/dive-service/divers`, {
+                    fetch(`http://${url}/dive-service/divers`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -54,13 +64,38 @@ export default class Submit extends Component {
                     }).then(response => {
                         if(response.ok) {
                             this.setState({buddyIsLoading: false});
-                            this.props.navigation.navigate('Home')
-                        } else{
-                            this.setState({enabled: true})
+                            // this.props.navigation.navigate('Home')
                         }
                         return response.json();
                     }).then(json => {
-                        console.log(json)
+                        console.log("first two Success")
+                        if(smsInfo.message != null){
+                            console.log("In sms part ")
+                            fetch(`http://${url}/sms-service/sms`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(smsInfo),
+                                redirect: 'follow'
+                            }).then(response => {
+                                console.log(response.body)
+                                if(response.ok) {
+                                    this.setState({smsIsLoading: false});
+                                }else {
+                                    this.setState({enabled: true})}
+                                return response.json();
+                            }).then(json => {
+                                console.log(json)
+                                smsId = json.smsId.smsId;
+                                this.setState({smsId: smsId})
+                                console.log("Saving smsId", smsId)
+                                return
+                            }).catch(function(error) {
+                                this.setState({enabled: true})
+                                console.log('There has been a problem with your fetch operation: ' + error.message);
+                            })
+                        }
                         return
                     }).catch(function(error) {
                         this.setState({enabled: true})
@@ -73,11 +108,11 @@ export default class Submit extends Component {
                     console.log('There has been a problem with your fetch operation: ' + error.message);
                 })
         }
-    }
+        }
 
     handleFinish = () => {
-        if(!this.state.diveIsLoading & !this.state.buddyIsLoading){
-            this.props.navigation.navigate('Home')
+        if(!this.state.diveIsLoading & !this.state.buddyIsLoading & !this.state.smsIsLoading){
+            this.props.navigation.navigate('ActiveDive', {smsId:this.state.smsId})
         }
     }
 
@@ -100,16 +135,18 @@ export default class Submit extends Component {
                                     ry={445}
                                 ></Ellipse>
                             </Svg>
+
+                            <View style={styles.scrollArea}>
+                                <SubmitComponent diveIsLoading={this.state.diveIsLoading}
+                                                 buddyIsLoading={this.state.buddyIsLoading}
+                                                 smsIsLoading={this.state.smsIsLoading}
+                                                 onPress={this.handleSubmit}
+                                                 disabled={!this.state.enabled}></SubmitComponent>
+                            </View>
                         </View>
                     </View>
-                    <View>
-                        <SubmitComponent diveIsLoading={this.state.diveIsLoading}
-                                         buddyIsLoading={this.state.buddyIsLoading}
-                                         onPress={this.handleSubmit}
-                                         disabled={!this.state.enabled}></SubmitComponent>
-                    </View>
 
-                    <ButtonFooter onPress={this.handleFinish} goBackTo={'Buddies'} textForward={"Finish"}
+                    <ButtonFooter onPress={this.handleFinish} goBackTo={'Contacts'} textForward={"Start Dive"}
                                   textBack={"Go Back"} style={styles.buttonFooter}
                                   navigation={this.props.navigation}></ButtonFooter>
                 </View>
@@ -144,6 +181,10 @@ class SubmitComponent extends Component {
                     <View style={confirmStyle.component}>
                         <Text style={confirmStyle.component}>  Buddy status   </Text>
                         <CheckComponent isLoading={this.props.buddyIsLoading}></CheckComponent>
+                    </View>
+                    <View style={confirmStyle.component}>
+                        <Text style={confirmStyle.component}>  SMS status   </Text>
+                        <CheckComponent isLoading={this.props.smsIsLoading}></CheckComponent>
                     </View>
                 </View>
                 <TouchableOpacity
@@ -196,7 +237,7 @@ const confirmStyle = StyleSheet.create(
 const confirmStyle2 = StyleSheet.create(
     {
         container: {
-            flexDirection: "row",
+            flexDirection: "column",
             padding: 20,
         }
     }
