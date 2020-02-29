@@ -6,7 +6,7 @@ import HeaderX from "../components/HeaderX";
 import Svg, {Ellipse} from "react-native-svg";
 import ButtonFooter from "../components/ButtonFooter";
 
-let url = "ec2-52-212-49-13.eu-west-1.compute.amazonaws.com";
+let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
 export default class Submit extends Component {
     state = {
@@ -135,7 +135,7 @@ export default class Submit extends Component {
                                     ry={445}
                                 ></Ellipse>
                             </Svg>
-
+                        </View>
                             <View style={styles.scrollArea}>
                                 <SubmitComponent diveIsLoading={this.state.diveIsLoading}
                                                  buddyIsLoading={this.state.buddyIsLoading}
@@ -143,13 +143,11 @@ export default class Submit extends Component {
                                                  onPress={this.handleSubmit}
                                                  disabled={!this.state.enabled}></SubmitComponent>
                             </View>
-                        </View>
                     </View>
-
-                    <ButtonFooter onPress={this.handleFinish} goBackTo={'Contacts'} textForward={"Start Dive"}
-                                  textBack={"Go Back"} style={styles.buttonFooter}
-                                  navigation={this.props.navigation}></ButtonFooter>
                 </View>
+                <ButtonFooter onPress={this.handleFinish} goBackTo={'Contacts'} textForward={"Start Dive"}
+                              textBack={"Go Back"} style={styles.buttonFooter}
+                              navigation={this.props.navigation}></ButtonFooter>
                 <StatusBar
                     barStyle="light-content"
                     hidden={false}

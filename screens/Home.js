@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {StyleSheet, View, Button, TouchableOpacity, Text} from "react-native";
+import {StyleSheet, View, Button, TouchableOpacity, Text, ScrollView} from "react-native";
 import HeaderX from "../components/HeaderX";
+import Maps from "../components/Maps";
 
 export default class Home extends Component {
 

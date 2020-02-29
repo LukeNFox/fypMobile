@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StatusBar, Button } from "react-native";
-import { styles } from './styles'
+import { View, Text, ScrollView, StatusBar } from "react-native";
+import {SCREEN_WIDTH, styles} from './styles'
 
 import HeaderX from "../components/HeaderX";
 import Svg, { Ellipse } from "react-native-svg";
 import ButtonFooter from "../components/ButtonFooter";
 import t from 'tcomb-form-native';
+import Maps from "../components/Maps";
 
 const Form = t.form.Form;
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -99,15 +100,15 @@ export default class PlanYourDive extends Component {
                 ry={445}
               ></Ellipse>
             </Svg>
+          </View>
             <View style={styles.scrollArea}>
               <ScrollView
                 horizontal={false}
                 contentContainerStyle={styles.scrollArea_contentContainerStyle}
               >
-                <View style={styles.diveInformationStack}>
-
-                  <View style={styles.diveInformation}>
-
+                <View>
+                  <Maps/>
+                  <View style={[styles.diveInformation, {top: SCREEN_WIDTH - 150}]}>
                     <Form
                         ref={c => this._form = c} // assign a ref
                         type={Dive}
@@ -118,12 +119,11 @@ export default class PlanYourDive extends Component {
                 </View>
               </ScrollView>
             </View>
-          </View>
-        </View>
-        <View style={styles.buttonFooter}>
-          <ButtonFooter onPress={this.handlePress}  goBackTo={'Home'} textForward={"Go to Buddies"} textBack={"Cancel"} navigation={this.props.navigation}></ButtonFooter>
         </View>
         </View>
+      <View style={styles.buttonFooter}>
+        <ButtonFooter onPress={this.handlePress}  goBackTo={'Home'} textForward={"Go to Buddies"} textBack={"Cancel"} navigation={this.props.navigation}></ButtonFooter>
+      </View>
       <StatusBar
         hidden={false}
       ></StatusBar>

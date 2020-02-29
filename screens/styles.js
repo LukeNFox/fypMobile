@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native'
+import {Dimensions, ScrollView, StyleSheet} from 'react-native'
+import React from "react";
+export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
+
 
 const styles = StyleSheet.create({
     root: {
@@ -8,8 +11,6 @@ const styles = StyleSheet.create({
     body: {
         top: 0,
         backgroundColor: "#1fb2cc",
-        flex: 1,
-        flexDirection: 'column',
     },
     pageName: {
         color: "rgba(255,255,255,1)",
@@ -24,22 +25,17 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     scrollArea: {
-        left: 250,
-        height: 500,
+        height: '100%',
+        alignSelf: 'center',
         position: "absolute",
-        right: 250,
-        top: 30
+        top: 90
     },
     scrollArea_contentContainerStyle: {
-        width: 358,
-        height: 1500,
+        justifyContent: 'space-between',
+        width: SCREEN_WIDTH - 50,
     },
     diveInformation: {
-        top: 0,
-        left: 0,
-        height: 153,
-        position: "absolute",
-        right: 0
+        height: 2200
     },
     expanded: {
         color: "#121212",
@@ -49,12 +45,6 @@ const styles = StyleSheet.create({
         width: 320,
         height: 80,
     },
-    diveInformationStack: {
-        height: 562,
-        marginTop: 18,
-        marginLeft: 24,
-        marginRight: 24
-    },
     ellipseStack: {
         height: 890,
         marginTop: 12,
@@ -62,13 +52,11 @@ const styles = StyleSheet.create({
         marginRight: -250
     },
     buttonFooter: {
-        bottom: 0,
         height: 80,
     },
     bodyStack: {
         flex: 1,
         flexDirection: 'column',
-        marginBottom: -3
     }
 })
 

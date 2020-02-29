@@ -58,13 +58,13 @@ export default class Buddies extends Component {
                       ry={445}
                   ></Ellipse>
                 </Svg>
+              </View>
                 <View style={styles.scrollArea}>
                   <ScrollView
                       horizontal={false}
                       contentContainerStyle={styles.scrollArea_contentContainerStyle}
                   >
                     <View style={styles.diveInformationStack}>
-
                       <View style={styles.diveInformation}>
                         <Text style={styles.expanded}></Text>
                         <Form
@@ -76,7 +76,6 @@ export default class Buddies extends Component {
                   </ScrollView>
                 </View>
               </View>
-            </View>
           </View>
           <ButtonFooter onPress={this.handlePress} style={styles.buttonFooter} goBackTo={'PlanYourDive'}
                         textForward={"Choose Contacts"} textBack={"Go Back"}

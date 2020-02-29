@@ -46,7 +46,7 @@ export default class Contacts extends Component {
 
             let number = valueObject.phone
             valueObject.phone = ("+353" + number.toString());
-            
+
             valueObject.message = null;
             this.props.navigation.state.params.smsInformation = valueObject;
 
@@ -80,6 +80,7 @@ export default class Contacts extends Component {
                                     ry={445}
                                 ></Ellipse>
                             </Svg>
+                        </View>
                             <View style={styles.scrollArea}>
                                 <ScrollView
                                     horizontal={false}
@@ -100,10 +101,9 @@ export default class Contacts extends Component {
                                 </ScrollView>
                             </View>
                         </View>
-                    </View>
-                    <View style={styles.buttonFooter}>
-                        <ButtonFooter onPress={this.handlePress}  goBackTo={'Buddies'} textForward={"Submit"} textBack={"Go Back"} navigation={this.props.navigation}></ButtonFooter>
-                    </View>
+                </View>
+                <View style={styles.buttonFooter}>
+                    <ButtonFooter onPress={this.handlePress}  goBackTo={'Buddies'} textForward={"Submit"} textBack={"Go Back"} navigation={this.props.navigation}></ButtonFooter>
                 </View>
                 <StatusBar
                     hidden={false}

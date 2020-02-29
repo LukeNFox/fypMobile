@@ -144,6 +144,11 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 dependencies {
+    implementation project(':@react-native-community_geolocation')
+    implementation(project(':react-native-maps'))
+    implementation 'com.google.android.gms:play-services-base:10.0.1'
+    implementation 'com.google.android.gms:play-services-maps:10.0.1'
+    implementation "com.google.android.gms:play-services-analytics:16.0.0"
     implementation project(':amazon-cognito-identity-js')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-svg')

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 export default class ButtonFooter extends Component{
   constructor(props){
@@ -13,11 +14,12 @@ export default class ButtonFooter extends Component{
 
   render() {
     return (
+        <HideWithKeyboard>
         <View style={[styles.container, this.props.style]}>
           <View style={styles.rect}>
             <View style={styles.materialButtonLightRow}>
               <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate(this.props.goBackTo)}
+                  onPress={() => this.props.navigation.navigate(this.props.goBackTo, this.props.navigation.state.params)}
                   style={[ButtonStyles.container,ButtonStyles.light, styles.materialButtonLight]}>
                 <Text style={ButtonStyles.captionLight}>{this.props.textBack}</Text>
               </TouchableOpacity>
@@ -29,6 +31,7 @@ export default class ButtonFooter extends Component{
             </View>
           </View>
         </View>
+        </HideWithKeyboard>
     );
   }
 }
