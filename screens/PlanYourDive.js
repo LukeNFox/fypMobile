@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StatusBar } from "react-native";
+import { View, Text, ScrollView, StatusBar} from "react-native";
 import {SCREEN_WIDTH, styles} from './styles'
+import AsyncStorage from '@react-native-community/async-storage';
 
 import HeaderX from "../components/HeaderX";
 import Svg, { Ellipse } from "react-native-svg";
@@ -9,78 +10,75 @@ import t from 'tcomb-form-native';
 import Maps from "../components/Maps";
 
 const Form = t.form.Form;
-import DateTimePicker from '@react-native-community/datetimepicker';
-
-var environment = t.enums({
-  A: 'Fresh',
-  B: 'Salt',
-  C: 'Shore',
-  D: 'Boat',
-  E: 'Deep',
-  F: 'Night'
-});
-
-var difficulty = t.enums({
-  E: 'Easy',
-  M: 'Medium',
-  H: 'Hard'
-})
-
-var strength = t.enums({
-  C: 'Calm',
-  M: 'Moderate',
-  R: 'Rough'
-})
-
-var current = t.enums({
-  N: 'None',
-  M: 'Moderate',
-  S: 'Strong'
-})
-
-const Dive = t.struct({
-  name:  t.maybe(t.String),
-  location:  t.maybe(t.String),
-
-  maxDepth: t.maybe(t.Integer),
-  entryTime:  t.maybe(t.Date),
-  totalBottomTime:  t.maybe(t.Number),
-  visibility:  t.maybe(t.Number),
-  environment:  t.maybe(environment),
-  seaConditions:  t.maybe(strength),
-  current:  t.maybe(current),
-  diveDifficulty:  t.maybe(difficulty),
-  parking:  t.maybe(difficulty),
-  nearestHyperbaricChamber:  t.maybe(t.String),
-  nearestHemsUnit:  t.maybe(t.String),
-  emsPhoneNumber:  t.maybe(t.Number),
-  coastguardPhoneNumber:  t.maybe(t.Number)
-});
-
-var options = {
-  fields: {
-    entryTime: {
-      mode: 'time' // display the Date field as a DatePickerAndroid
-    },
-    exitTime: {
-      mode: 'time' // display the Date field as a DatePickerAndroid
-    }
-  }
-};
 
 export default class PlanYourDive extends Component {
+
+  state = {
+    dive: {
+      diveName: null,
+      location: null,
+      maxDepth: null,
+      entryTime: null,
+      exitTime: null,
+      totalBottomTime: null,
+      visibility: null,
+      environment: null,
+      seaConditions: null,
+      current: null,
+      diveDifficulty: null,
+      parking: null,
+      nearestHyperbaricChamber: null,
+      DANPhoneNumber: null,
+      nearestHemsUnit: null,
+      emsPhoneNumber: null,
+      coastguardPhoneNumber: null
+    }
+  }
+
+  getInitialState() {
+    return {
+        diveName: this.state.dive.diveName,
+        location:  this.state.dive.location,
+        maxDepth: this.state.dive.maxDepth,
+        entryTime:  null,
+        exitTime: null,
+        totalBottomTime:  this.state.dive.totalBottomTime,
+        visibility:  this.state.dive.visibility,
+        environment:  this.state.dive.environment,
+        seaConditions:  this.state.dive.seaConditions,
+        current:  this.state.dive.current,
+        diveDifficulty:  this.state.dive.diveDifficulty,
+        parking:  this.state.dive.parking,
+        nearestHyperbaricChamber: this.state.dive.nearestHyperbaricChamber,
+        nearestHemsUnit:  this.state.dive.nearestHemsUnit,
+        DANPhoneNumber: this.state.dive.DANPhoneNumber,
+        emsPhoneNumber: this.state.dive.emsPhoneNumber,
+        coastguardPhoneNumber:  this.state.dive.coastguardPhoneNumber
+    };
+  }
+
+  componentDidMount = async () => {
+    const value = await AsyncStorage.getItem('dive')
+    console.log("stored Dive",value)
+    const lat = await AsyncStorage.getItem('latitude')
+    console.log("stored lat",lat)
+    const longitude = await AsyncStorage.getItem('longitude')
+    console.log("stored longitude",longitude)
+    this.setState({ 'dive': JSON.parse(value) });
+  }
 
   handlePress = () => {
     const value = this._form.getValue(); // use that ref to get the form value
     if (value) {
-      this.props.navigation.state.params.diveInformation = value;
-      console.log('pyd: ',this.props.navigation.state.params.diveInformation)
-      this.props.navigation.navigate('Buddies', {diveInformation: this.props.navigation.state.params.diveInformation, buddies: this.props.navigation.state.params.buddies})
-      console.log('value: ', value);
+      console.log("Handle Press",value)
+      AsyncStorage.setItem('dive', JSON.stringify(value));
+      this.setState({ 'dive': value });
+      this.props.navigation.navigate('Buddies')
     }
   }
 
   render() {
+    this.getInitialState();
     const { navigate } = this.props.navigation;
     console.log("navigate to plan a dive screen")
   return (
@@ -112,6 +110,7 @@ export default class PlanYourDive extends Component {
                     <Form
                         ref={c => this._form = c} // assign a ref
                         type={Dive}
+                        value={this.getInitialState()}
                         options={options}
                     />
 
@@ -122,7 +121,7 @@ export default class PlanYourDive extends Component {
         </View>
         </View>
       <View style={styles.buttonFooter}>
-        <ButtonFooter onPress={this.handlePress}  goBackTo={'Home'} textForward={"Go to Buddies"} textBack={"Cancel"} navigation={this.props.navigation}></ButtonFooter>
+        <ButtonFooter onPress={this.handlePress}  goBackTo={'Home'} textForward={"Confirm Dive"} textBack={"Cancel"} navigation={this.props.navigation}></ButtonFooter>
       </View>
       <StatusBar
         hidden={false}
@@ -131,3 +130,62 @@ export default class PlanYourDive extends Component {
   );
   }
 };
+
+
+var environment = t.enums({
+  Fresh: 'Fresh',
+  Salt: 'Salt',
+  Shore: 'Shore',
+  Boat: 'Boat',
+  Deep: 'Deep',
+  Night: 'Night'
+});
+
+var difficulty = t.enums({
+  Easy: 'Easy',
+  Medium: 'Medium',
+  Hard: 'Hard'
+})
+
+var strength = t.enums({
+  Calm: 'Calm',
+  Moderate: 'Moderate',
+  Rough: 'Rough'
+})
+
+var current = t.enums({
+  None: 'None',
+  Moderate: 'Moderate',
+  Strong: 'Strong'
+})
+
+const Dive = t.struct({
+  diveName:  t.maybe(t.String),
+  location:  t.maybe(t.String),
+  maxDepth: t.maybe(t.Integer),
+  entryTime:  t.maybe(t.Date),
+  exitTime:  t.maybe(t.Date),
+  totalBottomTime:  t.maybe(t.Number),
+  visibility:  t.maybe(t.Number),
+  environment:  t.maybe(environment),
+  seaConditions:  t.maybe(strength),
+  current:  t.maybe(current),
+  diveDifficulty:  t.maybe(difficulty),
+  parking:  t.maybe(difficulty),
+  nearestHyperbaricChamber:  t.maybe(t.String),
+  nearestHemsUnit:  t.maybe(t.String),
+  emsPhoneNumber:  t.maybe(t.Number),
+  coastguardPhoneNumber:  t.maybe(t.Number)
+});
+
+var options = {
+  fields: {
+    entryTime: {
+      mode: 'time' // display the Date field as a DatePickerAndroid
+    },
+    exitTime: {
+      mode: 'time' // display the Date field as a DatePickerAndroid
+    }
+  }
+};
+

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {StyleSheet, View, Button, TouchableOpacity, Text} from "react-native";
 import HeaderX from "../components/HeaderX";
-import ButtonFooter from "../components/ButtonFooter";
+import AsyncStorage from "@react-native-community/async-storage";
 
 let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
@@ -13,8 +13,8 @@ export default class ActiveDive extends Component {
             smsCancelled: false};
     }
 
-    handleSubmit = () => {
-        let smsId = this.props.navigation.state.params.smsId;
+    handleSubmit = async () => {
+        let smsId = await AsyncStorage.getItem('smsId')
 
         if(smsId!= null){
             fetch(`http://${url}/sms-service/sms?smsId=${smsId}`, {

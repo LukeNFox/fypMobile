@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {StyleSheet, View, Button, TouchableOpacity, Text, ScrollView} from "react-native";
 import HeaderX from "../components/HeaderX";
-import Maps from "../components/Maps";
 
 export default class Home extends Component {
 
@@ -12,50 +11,15 @@ export default class Home extends Component {
       <HeaderX/>
         <View style={ButtonStyles.container}>
         <TouchableOpacity
-            onPress={() => navigate('PlanYourDive', {diveInformation:diveInfo,buddies:buddies})}
+            onPress={() => navigate('PlanYourDive')}
             style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
             <Text style={ButtonStyles.caption}>Plan A Dive</Text>
         </TouchableOpacity>
-        {/*<TouchableOpacity*/}
-        {/*    onPress={() => navigate('Auth')}*/}
-        {/*    style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>*/}
-        {/*    <Text style={ButtonStyles.caption}>Login/Signup</Text>*/}
-        {/*</TouchableOpacity>*/}
     </View>
     </View>
   );
   }
 }
-
-var diveInfo = {
-    id: null,
-    name : null,
-    location : null,
-    maxDepth : null,
-    entryTime : null,
-    totalBottomTime : null,
-    visibility : null,
-    environment : null,
-    seaConditions : null ,
-    current : null,
-    diveDifficulty : null,
-    parking : null,
-    nearestHyperbaricChamber :  null,
-    nearestHemsUnit : null,
-    emsPhoneNumber : null,
-    coastguardPhoneNumber : null
-}
-var buddies = {
-    diveId: null,
-    name: null,
-    phoneNumber: null,
-    gasBlend: null,
-    exposureSuit: null,
-    breathingApparatus: null,
-    qualifications: null,
-    medicalHistory: null
-}
-
 
 const styles = StyleSheet.create({
   container: {

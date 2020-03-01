@@ -3,6 +3,7 @@ import { StyleSheet, Dimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 import Geolocation from '@react-native-community/geolocation';
+import AsyncStorage from "@react-native-community/async-storage";
 
 const ASPECT_RATIO = SCREEN_WIDTH / SCREEN_HEIGHT
 const LATITUDE_DELTA = 0.0922
@@ -26,6 +27,8 @@ export default class Maps extends Component {
     async getCurrentLocation() {
         Geolocation.getCurrentPosition(
             async position => {
+                await AsyncStorage.setItem('latitude', JSON.stringify(position.coords.latitude));
+                await AsyncStorage.setItem('longitude', JSON.stringify(position.coords.longitude));
                 if (this.map) {
                     this.map.animateToRegion({
                         latitude: position.coords.latitude,
@@ -33,7 +36,7 @@ export default class Maps extends Component {
                         latitudeDelta: 0.005,
                         longitudeDelta: 0.005
                     })
-                }
+                   }
             },
             error => console.log(error),
             {

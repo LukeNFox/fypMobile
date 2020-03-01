@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import {StyleSheet, View, Text, ActivityIndicator, StatusBar, Button, TouchableOpacity, ScrollView} from "react-native";
+import {Image,StyleSheet, View, Text, ActivityIndicator, StatusBar, Button, TouchableOpacity, ScrollView} from "react-native";
 import { styles } from './styles'
+import AsyncStorage from "@react-native-community/async-storage";
 
 import HeaderX from "../components/HeaderX";
 import Svg, {Ellipse} from "react-native-svg";
@@ -8,12 +9,16 @@ import ButtonFooter from "../components/ButtonFooter";
 
 let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
+//diveinfo {"coastguardPhoneNumber": null, "current": null, "diveDifficulty": null, "diveName": "Luke", "emsPhoneNumber": null, "entryTime": null, "environment": null, "exitTime": null, "latitude": 52.719939999999994, "location": "galway", "longitude": -8.493996666666668, "maxDepth": null, "nearestHemsUnit": null, "nearestHyperbaricChamber": null, "parking": null, "seaConditions": null, "totalBottomTime": null, "visibility": null}
+//buddyInfo {"breathingApparatus": null, "diveId": -1960391795, "exposureSuit": null, "gasBlend": "air", "medicalHistory": null, "name": "Patsy ", "phoneNumber": "086", "qualifications": null}
+//smsInfo {"deliverytime": "07:56", "diveId": -1960391795, "name": "Luke", "phone": "+353846"}
+
 export default class Submit extends Component {
     state = {
         diveIsLoading: true,
         buddyIsLoading: true,
-        smsIsLoading:true,
-        enabled:  true
+        smsIsLoading: true,
+        enabled: true
     };
 
     constructor(props) {
@@ -21,98 +26,138 @@ export default class Submit extends Component {
         this.state = {
             diveIsLoading: true,
             buddyIsLoading: true,
-            smsIsLoading:true,
+            smsIsLoading: true,
             smsId: null,
-            enabled: true };
+            enabled: true
+        };
     }
 
-    handleSubmit = () => {
-        this.setState({diveIsLoading: true, buddyIsLoading: true, smsIsLoading:true, enabled: false });
-        let diveInfo    = this.props.navigation.state.params.diveInformation;
-        let buddy     = this.props.navigation.state.params.buddies;
-        let smsInfo        = this.props.navigation.state.params.smsInformation;
-        buddy.diveId = null;
-        let smsId = null;
+    submitDive = async () => {
+        let dive = await AsyncStorage.getItem('dive')
+        let latitude = await AsyncStorage.getItem('latitude')
+        let longitude = await AsyncStorage.getItem('longitude')
 
-        if (diveInfo) {
-            fetch(`http://${url}/dive-service/dives`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(diveInfo),
-                redirect: 'follow'
-            }).then(response => {
-                if(response.ok) {
-                    this.setState({diveIsLoading: false});
-                }else {this.setState({enabled: true})}
-                return response.json();
-            }).then(json => {
-                buddy.diveId = json.id;
-                smsInfo.message = ("The dive information is available at http://www.scubaSOS.com/" + buddy.diveId );
-                console.log("SMS populated with message: ",smsInfo)
-                console.log("Returning diveId", buddy.diveId)
-                if (buddy.diveId) {
-                    console.log("Buddy populated with dive id: ",buddy)
-                    fetch(`http://${url}/dive-service/divers`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(buddy),
-                        redirect: 'follow'
-                    }).then(response => {
-                        if(response.ok) {
-                            this.setState({buddyIsLoading: false});
-                            // this.props.navigation.navigate('Home')
-                        }
-                        return response.json();
-                    }).then(json => {
-                        console.log("first two Success")
-                        if(smsInfo.message != null){
-                            console.log("In sms part ")
-                            fetch(`http://${url}/sms-service/sms`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(smsInfo),
-                                redirect: 'follow'
-                            }).then(response => {
-                                console.log(response.body)
-                                if(response.ok) {
-                                    this.setState({smsIsLoading: false});
-                                }else {
-                                    this.setState({enabled: true})}
-                                return response.json();
-                            }).then(json => {
-                                console.log(json)
-                                smsId = json.smsId.smsId;
-                                this.setState({smsId: smsId})
-                                console.log("Saving smsId", smsId)
-                                return
-                            }).catch(function(error) {
-                                this.setState({enabled: true})
-                                console.log('There has been a problem with your fetch operation: ' + error.message);
-                            })
-                        }
-                        return
-                    }).catch(function(error) {
-                        this.setState({enabled: true})
-                        console.log('There has been a problem with your Buddy fetch operation: ' + error.message);
-                    })
-                }
-                return
-            }).catch(function(error) {
-                    this.setState({enabled: true})
-                    console.log('There has been a problem with your fetch operation: ' + error.message);
-                })
+        let diveInfo = JSON.parse(dive);
+        diveInfo.latitude = JSON.parse(latitude);
+        diveInfo.longitude = JSON.parse(longitude);
+        console.log("Request Body diveinfo", diveInfo)
+
+        fetch(`http://${url}/dive-service/dives`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(diveInfo),
+            redirect: 'follow'
+        }).then(response => {
+            if (response.ok) {
+                this.setState({diveIsLoading: false});
+            } else {
+                this.setState({enabled: true})
+            }
+            return response.json();
+        }).then(json => {
+            AsyncStorage.setItem('diveId', JSON.stringify(json.id));
+            console.log("Set diveId: ", json.id)
+            this.submitBuddy()
+            this.submitSMS()
+            return
+        }).catch(function (error) {
+            this.setState({enabled: true})
+            console.log('There has been a problem with your Dive fetch operation: ' + error.message);
+        })
+    }
+
+    submitBuddy = async () => {
+        let buddy = await AsyncStorage.getItem('buddy')
+        let diveId = await AsyncStorage.getItem('diveId')
+
+        let buddyInfo = JSON.parse(buddy);
+        buddyInfo.diveId = JSON.parse(diveId);
+        console.log("Request Body buddyInfo", buddyInfo)
+
+        fetch(`http://${url}/dive-service/divers`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(buddyInfo),
+            redirect: 'follow'
+        }).then(response => {
+            if (response.ok) {
+                this.setState({buddyIsLoading: false});
+            }
+            return response.json();
+        }).then(json => {
+            AsyncStorage.setItem('buddyId', JSON.stringify(json.diverId));
+            console.log("Set buddyId: ", json.diverId)
+            return
+        }).catch(function (error) {
+            this.setState({enabled: true})
+            console.log('There has been a problem with your Buddy fetch operation: ' + error.message);
+        })
+    }
+
+    submitSMS = async () => {
+        let contact = await AsyncStorage.getItem('contact')
+        let diveId = await AsyncStorage.getItem('diveId')
+
+
+        let valueObject = JSON.parse(contact);
+
+        let time = new Date(valueObject.deliverytime);
+        let hours=time.getUTCHours();
+        if(hours<10){
+            hours = ("0" + hours)
         }
+        let minutes=time.getUTCMinutes();
+        if(minutes<10){
+            minutes = ("0" + minutes)
         }
+        valueObject.deliverytime = (hours + ":" + minutes);
+
+        let number = valueObject.phone
+        valueObject.phone = ("+353" + number.toString());
+
+        let smsInfo = valueObject;
+        smsInfo.diveId = JSON.parse(diveId);
+        console.log("Request Body smsInfo", smsInfo)
+        smsInfo.message = ("The dive information is available at http://www.scubaSOS.com/" + smsInfo.diveId);
+
+        fetch(`http://${url}/sms-service/sms`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(smsInfo),
+            redirect: 'follow'
+        }).then(response => {
+            console.log(response.body)
+            if (response.ok) {
+                this.setState({smsIsLoading: false});
+            } else {
+                this.setState({enabled: true})
+            }
+            return response.json();
+        }).then(json => {
+            AsyncStorage.setItem('smsId', JSON.stringify(json.smsId.smsId));
+            console.log("Set smsId: ", json.smsId.smsId)
+            return
+        }).catch(function (error) {
+            this.setState({enabled: true})
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+        })
+    }
+
+
+
+    handleSubmit = async () => {
+        await this.submitDive()
+    }
 
     handleFinish = () => {
         if(!this.state.diveIsLoading & !this.state.buddyIsLoading & !this.state.smsIsLoading){
-            this.props.navigation.navigate('ActiveDive', {smsId:this.state.smsId})
+            this.props.navigation.navigate('ActiveDive')
         }
     }
 
@@ -173,15 +218,15 @@ class SubmitComponent extends Component {
             <View style={confirmStyle.container}>
                 <View style={confirmStyle2.container}>
                     <View style={confirmStyle.component}>
-                        <Text style={confirmStyle.component}>  Dive status   </Text>
+                        <Text style={confirmStyle.component}>Dive status</Text>
                         <CheckComponent isLoading={this.props.diveIsLoading}></CheckComponent>
                     </View>
                     <View style={confirmStyle.component}>
-                        <Text style={confirmStyle.component}>  Buddy status   </Text>
+                        <Text style={confirmStyle.component}>Buddy status</Text>
                         <CheckComponent isLoading={this.props.buddyIsLoading}></CheckComponent>
                     </View>
                     <View style={confirmStyle.component}>
-                        <Text style={confirmStyle.component}>  SMS status   </Text>
+                        <Text style={confirmStyle.component}>SMS status</Text>
                         <CheckComponent isLoading={this.props.smsIsLoading}></CheckComponent>
                     </View>
                 </View>
@@ -189,7 +234,7 @@ class SubmitComponent extends Component {
                     onPress={this.handlePress}
                     disabled={this.props.disabled}
                     style={ButtonStyles.container}>
-                    <Text style={ButtonStyles.caption}>Confirm</Text>
+                    <Text style={ButtonStyles.caption}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -212,7 +257,10 @@ class CheckComponent extends Component {
         } else {
             return (
                 <View>
-                    <Text>  Success</Text>
+                    <Image
+                        style={{width: 50, height: 50}}
+                        source={require('../assets/green_tick.jpg')}
+                    />
                 </View>
             )
         }
@@ -226,8 +274,8 @@ const confirmStyle = StyleSheet.create(
             alignItems: "center",
         },
         component: {
+            alignItems: "center",
             fontSize: 20,
-            backgroundColor: "gray",
             margin: 5
         }
     }
@@ -236,7 +284,6 @@ const confirmStyle2 = StyleSheet.create(
     {
         container: {
             flexDirection: "column",
-            padding: 20,
         }
     }
 )

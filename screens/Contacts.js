@@ -6,6 +6,7 @@ import HeaderX from "../components/HeaderX";
 import Svg, { Ellipse } from "react-native-svg";
 import ButtonFooter from "../components/ButtonFooter";
 import t from 'tcomb-form-native';
+import AsyncStorage from "@react-native-community/async-storage";
 
 const Form = t.form.Form;
 
@@ -13,7 +14,8 @@ let options = {
     fields: {
         deliverytime: {
             mode: 'time', // display the Date field as a DatePickerAndroid
-            label: "Delivery Time"
+            label: "Delivery Time",
+            // defaultValueText: this.state.contacts.deliverytime
         }
     }
 };
@@ -26,43 +28,44 @@ const Contact = t.struct({
 
 export default class Contacts extends Component {
 
+    state ={
+        contacts:[],
+        contact: {
+            name: null,
+            phone: null,
+            deliverytime: null
+        }
+    };
+
+    getInitialState() {
+       return {
+            name: this.state.contact.name,
+            phone: this.state.contact.phone,
+            deliverytime: null
+        };
+    }
+
+    componentDidMount = async () => {
+        const value = await AsyncStorage.getItem('contact')
+        console.log("stored Contact",value)
+        this.setState({ 'contact': JSON.parse(value) });
+    }
+
     handlePress = () => {
         const value = this._form.getValue(); // use that ref to get the form value
         if (value) {
-            // this.props.navigation.state.params.buddies.push(value);
-            let valueString = JSON.stringify(value);
-            let valueObject = JSON.parse(valueString);
+            console.log("Handle Press",value)
+            AsyncStorage.setItem('contact', JSON.stringify(value));
+            this.setState({ 'contact': value });
+            this.props.navigation.navigate('Submit')
 
-            let time = new Date(valueObject.deliverytime);
-            let hours=time.getUTCHours();
-            if(hours<10){
-                hours = ("0" + hours)
-            }
-            let minutes=time.getUTCMinutes();
-            if(minutes<10){
-                minutes = ("0" + minutes)
-            }
-            valueObject.deliverytime = (hours + ":" + minutes);
-
-            let number = valueObject.phone
-            valueObject.phone = ("+353" + number.toString());
-
-            valueObject.message = null;
-            this.props.navigation.state.params.smsInformation = valueObject;
-
-            console.log(this.props.navigation.state.params)
-
-            this.props.navigation.navigate('Submit', {
-                smsInformation: this.props.navigation.state.params.smsInformation,
-                diveInformation: this.props.navigation.state.params.diveInformation,
-                buddies: this.props.navigation.state.params.buddies
-            })
         }
     }
 
     render() {
+        this.getInitialState()
         const { navigate } = this.props.navigation;
-        console.log("navigate to plan a dive screen")
+        console.log("navigate to plan a Contacts screen")
         return (
             <View style={styles.root}>
                 <HeaderX/>
@@ -86,13 +89,14 @@ export default class Contacts extends Component {
                                     horizontal={false}
                                     contentContainerStyle={styles.scrollArea_contentContainerStyle}
                                 >
-                                    <View style={styles.diveInformationStack}>
+                                    <View>
 
                                         <View style={styles.diveInformation}>
 
                                             <Form
                                                 ref={c => this._form = c} // assign a ref
                                                 type={Contact}
+                                                value={this.getInitialState()}
                                                 options={options}
                                             />
 
@@ -103,7 +107,7 @@ export default class Contacts extends Component {
                         </View>
                 </View>
                 <View style={styles.buttonFooter}>
-                    <ButtonFooter onPress={this.handlePress}  goBackTo={'Buddies'} textForward={"Submit"} textBack={"Go Back"} navigation={this.props.navigation}></ButtonFooter>
+                    <ButtonFooter onPress={this.handlePress}  goBackTo={'Buddies'} textForward={"Confirm Contacts"} textBack={"Go Back"} navigation={this.props.navigation}></ButtonFooter>
                 </View>
                 <StatusBar
                     hidden={false}
