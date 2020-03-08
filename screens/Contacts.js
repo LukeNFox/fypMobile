@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StatusBar, Button } from "react-native";
+import {View, Text, ScrollView, StatusBar, Button, Picker} from "react-native";
 import { styles } from './styles'
 
 import HeaderX from "../components/HeaderX";
@@ -10,7 +10,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 const Form = t.form.Form;
 
-let options = {
+let fieldOptions = {
     fields: {
         deliverytime: {
             mode: 'time', // display the Date field as a DatePickerAndroid
@@ -20,6 +20,10 @@ let options = {
     }
 };
 
+let options = [];
+let storedContacts = [];
+
+
 const Contact = t.struct({
     name: t.String,
     phone: t.Number,
@@ -28,14 +32,20 @@ const Contact = t.struct({
 
 export default class Contacts extends Component {
 
-    state ={
-        contacts:[],
-        contact: {
+    constructor(props) {
+        super(props)
+        this.initialiseStorage()
+        this.updatePicker()
+        this.state = {
+            options: [],
             name: null,
-            phone: null,
-            deliverytime: null
+            contact: {
+                name: null,
+                phone: null,
+                deliverytime: null
+            }
         }
-    };
+    }
 
     getInitialState() {
        return {
@@ -46,24 +56,70 @@ export default class Contacts extends Component {
     }
 
     componentDidMount = async () => {
-        const value = await AsyncStorage.getItem('contact')
+        const value = await AsyncStorage.getItem('currentContact')
         console.log("stored Contact",value)
-        this.setState({ 'contact': JSON.parse(value) });
+        if(value) {
+            this.setState({'contact': JSON.parse(value)});
+        }
     }
 
     handlePress = () => {
         const value = this._form.getValue(); // use that ref to get the form value
         if (value) {
             console.log("Handle Press",value)
-            AsyncStorage.setItem('contact', JSON.stringify(value));
+            if (storedContacts != null) {
+                storedContacts.forEach(
+                    function (item, index, object) {
+                        if (item.name == value.name) {
+                            object.splice(index, 1);
+                            return
+                        }
+                    })
+
+            }
+            storedContacts.push(value)
+            AsyncStorage.setItem('storedContacts', JSON.stringify(storedContacts));
+
+            AsyncStorage.setItem('currentContact', JSON.stringify(value));
             this.setState({ 'contact': value });
             this.props.navigation.navigate('Submit')
 
         }
     }
 
+    updateContact = async (name) => {
+        this.setState({name: options[name]})
+        let contactInfo = null;
+        if (storedContacts != null) {
+            await storedContacts.forEach(
+                function (stored) {
+                    if (stored.name == options[name]) {
+                        contactInfo = stored;
+                    }
+                })
+        }
+        console.log(contactInfo)
+        this.setState({contact: contactInfo})
+    }
+
+    initialiseStorage = async () => {
+        let result = await AsyncStorage.getItem("storedContacts");
+        if (storedContacts != null) {
+            storedContacts = JSON.parse(result)
+        } else {
+            storedContacts = new Array();
+        }
+    }
+
+    updatePicker = async () => {
+        options = ["Create a new contact"];
+        await storedContacts.forEach(function (item) {
+            options.push(item.name)
+        })
+        this.setState({options: options});
+    }
+
     render() {
-        this.getInitialState()
         const { navigate } = this.props.navigation;
         console.log("navigate to plan a Contacts screen")
         return (
@@ -93,11 +149,20 @@ export default class Contacts extends Component {
 
                                         <View style={styles.diveInformation}>
 
+                                            <Text>Select a template: </Text>
+                                            <Picker
+                                                selectedValue={this.state.name}
+                                                onValueChange={this.updateContact}>
+                                                {Object.keys(options).map((key) => {
+                                                    return (<Picker.Item label={options[key]} value={key} key={key}/>) //if you have a bunch of keys value pair
+                                                })}
+                                            </Picker>
+
                                             <Form
                                                 ref={c => this._form = c} // assign a ref
                                                 type={Contact}
                                                 value={this.getInitialState()}
-                                                options={options}
+                                                options={fieldOptions}
                                             />
 
                                         </View>

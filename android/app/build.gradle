@@ -106,6 +106,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file('scubaSOS.keystore')
+            storePassword 'scubapass'
+            keyAlias 'scubaSOS'
+            keyPassword 'scubapass'
+        }
+    }
     splits {
         abi {
             reset()
@@ -118,6 +126,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release

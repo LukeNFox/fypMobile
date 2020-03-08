@@ -72,6 +72,7 @@ export default class App extends React.Component {
   }
 
    render() {
+    this.checkAuth()
     return (
       <AppContainer
         ref={nav => this.navigator = nav}

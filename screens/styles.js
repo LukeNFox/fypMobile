@@ -1,7 +1,7 @@
 import {Dimensions, ScrollView, StyleSheet} from 'react-native'
 import React from "react";
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
-
+export const ratio = SCREEN_HEIGHT/SCREEN_WIDTH
 
 const styles = StyleSheet.create({
     root: {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         width: SCREEN_WIDTH - 50,
     },
     diveInformation: {
-        height: 2200
+        height: 2300
     },
     expanded: {
         color: "#121212",

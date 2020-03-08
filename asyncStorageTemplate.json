@@ -1,0 +1,150 @@
+{
+  "diveLog": [
+    "381659669",
+    "247382036",
+    "380451387"
+  ],
+  "emergencyServices": {
+    "emsPhoneNumber": null,
+    "coastguardPhoneNumber": null,
+    "DANPhoneNumber":null,
+    "nearestHemsUnit": null,
+    "nearestHyperbaricChamber":null
+  },
+
+  "storedDives": {
+    "dive": {
+      "diveSite": "galway",
+      "location": null,
+      "maxDepth": null,
+      "entryTime": null,
+      "exitTime": null,
+      "totalBottomTime": null,
+      "visibility": null,
+      "environment": null,
+      "seaConditions": null,
+      "current": null,
+      "diveDifficulty": null,
+      "parking": null,
+      "nearestHyperbaricChamber": null,
+      "DANPhoneNumber": null,
+      "nearestHemsUnit": null,
+      "emsPhoneNumber": null,
+      "coastguardPhoneNumber": null
+    },
+    "dive": {
+      "diveSite": "salthill",
+      "location": null,
+      "maxDepth": null,
+      "entryTime": null,
+      "exitTime": null,
+      "totalBottomTime": null,
+      "visibility": null,
+      "environment": null,
+      "seaConditions": null,
+      "current": null,
+      "diveDifficulty": null,
+      "parking": null,
+      "nearestHyperbaricChamber": null,
+      "DANPhoneNumber": null,
+      "nearestHemsUnit": null,
+      "emsPhoneNumber": null,
+      "coastguardPhoneNumber": null
+    },
+    "dive": {
+      "diveSite": "kilkee",
+      "location": null,
+      "maxDepth": null,
+      "entryTime": null,
+      "exitTime": null,
+      "totalBottomTime": null,
+      "visibility": null,
+      "environment": null,
+      "seaConditions": null,
+      "current": null,
+      "diveDifficulty": null,
+      "parking": null,
+      "nearestHyperbaricChamber": null,
+      "DANPhoneNumber": null,
+      "nearestHemsUnit": null,
+      "emsPhoneNumber": null,
+      "coastguardPhoneNumber": null
+    }
+  },
+
+  "storedBuddies": {
+    "Luke": {
+      "name": null,
+      "phoneNumber": null,
+      "gasBlend": null,
+      "exposureSuit": null,
+      "breathingApparatus": null,
+      "qualifications": null,
+      "medicalHistory": null
+    },
+    "Paul": {
+      "name": null,
+      "phoneNumber": null,
+      "gasBlend": null,
+      "exposureSuit": null,
+      "breathingApparatus": null,
+      "qualifications": null,
+      "medicalHistory": null
+    }
+  },
+  "latitude": "54.02095666666667",
+  "longitude": "-9.161946666666667",
+
+  "currentDive": {
+    "name": null,
+    "location": null,
+    "maxDepth": null,
+    "entryTime": null,
+    "totalBottomTime": null,
+    "visibility": null,
+    "environment": null,
+    "seaConditions": null,
+    "current": null,
+    "diveDifficulty": null,
+    "parking": null,
+    "nearestHyperbaricChamber": null,
+    "nearestHemsUnit": null,
+    "emsPhoneNumber": null,
+    "coastguardPhoneNumber": null
+  },
+  "currentBuddies": {
+    "1": {
+      "diverInformation": {
+        "name": null,
+        "phoneNumber": null,
+        "gasBlend": null,
+        "exposureSuit": null,
+        "breathingApparatus": null,
+        "qualifications": null,
+        "medicalHistory": null
+      }
+    },
+    "2": {
+      "diverInformation": {
+        "name": null,
+        "phoneNumber": null,
+        "gasBlend": null,
+        "exposureSuit": null,
+        "breathingApparatus": null,
+        "qualifications": null,
+        "medicalHistory": null
+      }
+    },
+    "3": {
+      "diverInformation": {
+        "name": null,
+        "phoneNumber": null,
+        "gasBlend": null,
+        "exposureSuit": null,
+        "breathingApparatus": null,
+        "qualifications": null,
+        "medicalHistory": null
+      }
+    }
+  }
+}

@@ -33,11 +33,35 @@ export default class Submit extends Component {
     }
 
     submitDive = async () => {
-        let dive = await AsyncStorage.getItem('dive')
+        let dive = await AsyncStorage.getItem('currentDive')
         let latitude = await AsyncStorage.getItem('latitude')
         let longitude = await AsyncStorage.getItem('longitude')
 
-        let diveInfo = JSON.parse(dive);
+        let valueObject = JSON.parse(dive);
+
+        let time = new Date(valueObject.entryTime);
+        let hours=time.getUTCHours();
+        if(hours<10){
+            hours = ("0" + hours)
+        }
+        let minutes=time.getUTCMinutes();
+        if(minutes<10){
+            minutes = ("0" + minutes)
+        }
+        valueObject.entryTime = (hours + ":" + minutes);
+
+        let exitTime = new Date(valueObject.exitTime);
+        let hours1=exitTime.getUTCHours();
+        if(hours1<10){
+            hours1= ("0" + hours1)
+        }
+        let minutes1=exitTime.getUTCMinutes();
+        if(minutes1<10){
+            minutes1 = ("0" + minutes1)
+        }
+        valueObject.exitTime = (hours1 + ":" + minutes1);
+
+        let diveInfo = valueObject;
         diveInfo.latitude = JSON.parse(latitude);
         diveInfo.longitude = JSON.parse(longitude);
         console.log("Request Body diveinfo", diveInfo)
@@ -69,10 +93,11 @@ export default class Submit extends Component {
     }
 
     submitBuddy = async () => {
-        let buddy = await AsyncStorage.getItem('buddy')
+        let buddy = await AsyncStorage.getItem('currentBuddy')
         let diveId = await AsyncStorage.getItem('diveId')
 
         let buddyInfo = JSON.parse(buddy);
+
         buddyInfo.diveId = JSON.parse(diveId);
         console.log("Request Body buddyInfo", buddyInfo)
 
@@ -99,7 +124,7 @@ export default class Submit extends Component {
     }
 
     submitSMS = async () => {
-        let contact = await AsyncStorage.getItem('contact')
+        let contact = await AsyncStorage.getItem('currentContact')
         let diveId = await AsyncStorage.getItem('diveId')
 
 

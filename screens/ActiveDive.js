@@ -46,7 +46,7 @@ export default class ActiveDive extends Component {
                     <TouchableOpacity
                         onPress={this.handleSubmit}
                         style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
-                        <Text style={ButtonStyles.caption}>Im a safe!</Text>
+                        <Text style={ButtonStyles.caption}>I am safe!</Text>
                     </TouchableOpacity>
                 </View>
                 </View>

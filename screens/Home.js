@@ -48,7 +48,7 @@ const ButtonStyles = StyleSheet.create({
         justifyContent: "space-evenly",
         width: 120,
         height: 50,
-        borderRadius: 2,
+        borderRadius: 10,
         shadowOffset: {
             height: 1,
             width: 0
@@ -62,4 +62,3 @@ const ButtonStyles = StyleSheet.create({
         fontSize: 14
     },
 });
-

@@ -42,7 +42,7 @@ const ButtonStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 2,
-    borderRadius: 2,
+    borderRadius: 10,
     shadowOffset: {
       height: 1,
       width: 0

@@ -24,10 +24,9 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   logoHeader: {
-    width: 41,
-    height: 44,
-    marginTop: 6,
-    marginLeft: 159
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
