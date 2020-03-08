@@ -83,7 +83,8 @@ export default class Submit extends Component {
         }).then(json => {
             AsyncStorage.setItem('diveId', JSON.stringify(json.id));
             console.log("Set diveId: ", json.id)
-            this.submitBuddy()
+            this.submitDivers('currentProfile')
+            this.submitDivers('currentBuddy')
             this.submitSMS()
             return
         }).catch(function (error) {
@@ -92,8 +93,9 @@ export default class Submit extends Component {
         })
     }
 
-    submitBuddy = async () => {
-        let buddy = await AsyncStorage.getItem('currentBuddy')
+    submitDivers = async (diver) => {
+
+        let buddy = await AsyncStorage.getItem(diver);
         let diveId = await AsyncStorage.getItem('diveId')
 
         let buddyInfo = JSON.parse(buddy);
@@ -115,7 +117,7 @@ export default class Submit extends Component {
             return response.json();
         }).then(json => {
             AsyncStorage.setItem('buddyId', JSON.stringify(json.diverId));
-            console.log("Set buddyId: ", json.diverId)
+            console.log("BuddyId: ", json.diverId)
             return
         }).catch(function (error) {
             this.setState({enabled: true})

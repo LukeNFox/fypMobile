@@ -15,6 +15,11 @@ export default class Home extends Component {
             style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
             <Text style={ButtonStyles.caption}>Plan A Dive</Text>
         </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigate('Profile')}
+                style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
+                <Text style={ButtonStyles.caption}>Choose a Profile</Text>
+            </TouchableOpacity>
     </View>
     </View>
   );
