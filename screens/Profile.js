@@ -14,13 +14,13 @@ let options = [];
 let storedProfiles = null;
 
 const ProfileForm = t.struct({
-    name: t.maybe(t.String),
-    phoneNumber: t.maybe(t.Number),
-    gasBlend: t.maybe(t.String),
-    exposureSuit: t.maybe(t.String),
-    breathingApparatus: t.maybe(t.String),
-    qualifications: t.maybe(t.String),
-    medicalHistory: t.maybe(t.String)
+    name: t.String,
+    phoneNumber: t.Number,
+    gasBlend: t.String,
+    exposureSuit: t.String,
+    breathingApparatus: t.String,
+    qualifications: t.String,
+    medicalHistory: t.String
 });
 
 

@@ -25,6 +25,7 @@ export default class ActiveDive extends Component {
                 redirect: 'follow'
             }).then(response => {
                 if(response.ok) {
+                    this.props.navigation.navigate('Home')
                     this.setState({smsCancelled: true});
                 }
                 return
@@ -37,6 +38,31 @@ export default class ActiveDive extends Component {
         }
     }
 
+    handleSendNow = async () => {
+        let smsId = await AsyncStorage.getItem('smsId')
+
+        if(smsId!= null){
+            fetch(`http://${url}/sms-service/sms/now?smsId=${smsId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow'
+            }).then(response => {
+                if(response.ok) {
+                    this.props.navigation.navigate('Home')
+                    this.setState({smsCancelled: true});
+                }
+                return
+            }).catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+            })
+        }
+        if(this.state.smsCancelled){
+
+        }
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -46,7 +72,12 @@ export default class ActiveDive extends Component {
                     <TouchableOpacity
                         onPress={this.handleSubmit}
                         style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
-                        <Text style={ButtonStyles.caption}>I am safe!</Text>
+                        <Text style={ButtonStyles.caption}>Cancel SMS</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={this.handleSendNow}
+                        style={[styles.materialButtonDark2,ButtonStyles.buttons, this.props.style]}>
+                        <Text style={ButtonStyles.caption}>Send SMS now</Text>
                     </TouchableOpacity>
                 </View>
                 </View>

@@ -21,7 +21,7 @@ let fieldOptions = {
 };
 
 let options = [];
-let storedContacts = [];
+let storedContacts = null;
 
 
 const Contact = t.struct({

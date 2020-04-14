@@ -12,7 +12,7 @@ import Maps from "../components/Maps";
 const Form = t.form.Form;
 
 let options = [];
-let storedDives = [];
+let storedDives = null;
 
 export default class PlanYourDive extends Component {
 
@@ -229,7 +229,7 @@ var current = t.enums({
 })
 
 const Dive = t.struct({
-    diveSite: t.maybe(t.String),
+    diveSite: t.String,
     location: t.maybe(t.String),
     maxDepth: t.maybe(t.Integer),
     entryTime: t.maybe(t.Date),
