@@ -26,7 +26,7 @@ let storedContacts = null;
 
 const Contact = t.struct({
     name: t.String,
-    phone: t.Number,
+    phoneNumber: t.Number,
     deliverytime : t.Date
 });
 
@@ -41,7 +41,7 @@ export default class Contacts extends Component {
             name: null,
             contact: {
                 name: null,
-                phone: null,
+                phoneNumber: null,
                 deliverytime: null
             }
         }
@@ -50,7 +50,7 @@ export default class Contacts extends Component {
     getInitialState() {
        return {
             name: this.state.contact.name,
-            phone: this.state.contact.phone,
+            phoneNumber: this.state.contact.phoneNumber,
             deliverytime: null
         };
     }
@@ -147,7 +147,7 @@ export default class Contacts extends Component {
                                 >
                                     <View>
 
-                                        <View style={styles.diveInformation}>
+                                        <View style={{ height: 500 }}>
 
                                             <Text>Select a template: </Text>
                                             <Picker

@@ -13,16 +13,35 @@ const Form = t.form.Form;
 let options = [];
 let storedProfiles = null;
 
+let gasBlend = t.enums({
+    Air: 'Air',
+    Nitrox: 'Nitrox',
+    Trimix: 'Trimix',
+    Heliox: 'Heliox'
+})
+
+let exposureSuit = t.enums({
+    Wetsuit: 'Wet suit',
+    DrySuit: 'Dry Suit',
+    SemiDrySuit: 'Semi-Dry Suit',
+})
+
+// breathing apparatus
+let breathingApparatus = t.enums({
+    OpenCircuit: 'Open Circuit',
+    Rebreather: 'Rebreather',
+})
+
+
 const ProfileForm = t.struct({
     name: t.String,
     phoneNumber: t.Number,
-    gasBlend: t.String,
-    exposureSuit: t.String,
-    breathingApparatus: t.String,
+    gasBlend: gasBlend,
+    exposureSuit: exposureSuit,
+    breathingApparatus: breathingApparatus,
     qualifications: t.String,
     medicalHistory: t.String
 });
-
 
 export default class Profile extends Component {
     constructor(props) {
@@ -145,7 +164,7 @@ export default class Profile extends Component {
                                 contentContainerStyle={styles.scrollArea_contentContainerStyle}
                             >
                                 <View>
-                                    <View style={styles.diveInformation}>
+                                    <View style={{ height: 1410 }}>
 
                                         <Text>Select a template: </Text>
                                         <Picker

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         width: SCREEN_WIDTH - 50,
     },
     diveInformation: {
-        height: 2300
+        height: 2400
     },
     expanded: {
         color: "#121212",

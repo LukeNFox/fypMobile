@@ -223,24 +223,33 @@ var strength = t.enums({
 })
 
 var current = t.enums({
-    None: 'None',
+    None: 'Weak',
     Moderate: 'Moderate',
     Strong: 'Strong'
 })
 
+var maxDepth = t.enums({
+    10:'0 - 10 m',
+    20:'10 - 20 m',
+    30:'20 - 30 m',
+    40:'30+ m'
+})
+
+
+
 const Dive = t.struct({
     diveSite: t.String,
-    location: t.maybe(t.String),
-    maxDepth: t.maybe(t.Integer),
-    entryTime: t.maybe(t.Date),
-    exitTime: t.maybe(t.Date),
-    totalBottomTime: t.maybe(t.Number),
+    location: t.String,
+    maxDepth: maxDepth,
+    entryTime: t.Date,
+    exitTime: t.Date,
+    totalBottomTime: t.Number,
     visibility: t.maybe(t.Number),
-    environment: t.maybe(environment),
-    seaConditions: t.maybe(strength),
-    current: t.maybe(current),
-    diveDifficulty: t.maybe(difficulty),
-    parking: t.maybe(difficulty),
+    environment: environment,
+    seaConditions: strength,
+    current: current,
+    diveDifficulty: difficulty,
+    parking: difficulty,
     nearestHyperbaricChamber: t.maybe(t.String),
     nearestHemsUnit: t.maybe(t.String),
     emsPhoneNumber: t.maybe(t.Number),

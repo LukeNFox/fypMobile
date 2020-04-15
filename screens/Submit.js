@@ -143,7 +143,7 @@ export default class Submit extends Component {
         }
         valueObject.deliverytime = (hours + ":" + minutes);
 
-        let number = valueObject.phone
+        let number = valueObject.phoneNumber
         valueObject.phone = ("+353" + number.toString());
 
         let smsInfo = valueObject;
