@@ -38,7 +38,7 @@ export default class App extends React.Component {
     checkSignIn = async (authState) => {
         console.log(authState)
         if(authState == "signedIn"){
-            this.props.navigation.navigate('Home')
+            this.props.navigation.navigate('Submit')
         }
     }
 

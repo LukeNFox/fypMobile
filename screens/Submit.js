@@ -6,6 +6,8 @@ import AsyncStorage from "@react-native-community/async-storage";
 import HeaderX from "../components/HeaderX";
 import Svg, {Ellipse} from "react-native-svg";
 import ButtonFooter from "../components/ButtonFooter";
+import {Auth as AmplifyAuth} from "aws-amplify";
+import {NavigationActions} from "react-navigation";
 
 let url = "ec2-63-33-233-120.eu-west-1.compute.amazonaws.com";
 
@@ -176,7 +178,15 @@ export default class Submit extends Component {
         })
     }
 
-
+    checkAuth = async () => {
+        try {
+            await AmplifyAuth.currentAuthenticatedUser()
+        } catch (err) {
+            this.props.navigation.dispatch(
+                this.props.navigation.navigate({routeName: 'Auth'})
+            )
+        }
+    }
 
     handleSubmit = async () => {
         await this.submitDive()
@@ -190,6 +200,7 @@ export default class Submit extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
+        this.checkAuth()
         return (
             <View style={styles.root}>
                 <HeaderX icon2Name="power" style={styles.headerX}></HeaderX>

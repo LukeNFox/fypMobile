@@ -68,22 +68,10 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
 
-  checkAuth = async () => {
-    try {
-      await AmplifyAuth.currentAuthenticatedUser()
-    } catch (err) {
-      this.navigator.dispatch(
-          NavigationActions.navigate({routeName: 'Auth'})
-      )
-    }
-  }
-
    render() {
-    this.checkAuth()
     return (
       <AppContainer
         ref={nav => this.navigator = nav}
-       onNavigationStateChange={this.checkAuth}
     />
     )
   }
